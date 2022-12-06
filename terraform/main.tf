@@ -28,7 +28,6 @@ resource "aws_glue_crawler" "glue-crawler" {
   }
 
   // start crawling on creation
-  // terraform doesn't wait for command to finish
   provisioner "local-exec" {
     command = "aws glue start-crawler --name ${self.name}"
   }
