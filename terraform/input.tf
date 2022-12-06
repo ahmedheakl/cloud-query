@@ -1,21 +1,28 @@
-variable "target_bucket" {
+variable "s3_target_bucket" {
   type        = string
   default     = "layoffs-data"
   description = "Name of the S3 bucket where the data will be available"
   nullable    = false
 }
 
-variable "target_folder" {
+variable "s3_target_folder" {
   type        = string
   default     = "data"
   description = "Name of the directory where the csv will be stored, this is also used to be the name of the table"
   nullable    = false
 }
 
-variable "target_file" {
+variable "s3_target_file" {
   type        = string
-  description = "Path/name of file to be uploaded for querying"
+  description = "Name of file to be uploaded for querying"
   default     = "layoffs_data.csv"
+  nullable    = false
+}
+
+variable "target_file_path" {
+  type        = string
+  description = "Path of file to be uploaded for querying"
+  default     = "./layoffs_data.csv"
   nullable    = false
 }
 
