@@ -14,7 +14,7 @@ resource "aws_s3_object" "folder" {
 }
 
 resource "aws_glue_catalog_database" "glue-db" {
-  name        = var.athena_db
+  name = var.athena_db
 }
 
 resource "aws_glue_crawler" "glue-crawler" {
@@ -28,7 +28,30 @@ resource "aws_glue_crawler" "glue-crawler" {
   }
 
   // start crawling on creation
+  // terraform doesn't wait for command to finish
   provisioner "local-exec" {
     command = "aws glue start-crawler --name ${self.name}"
   }
+}
+
+data "archive_file" "go_package" {
+  type        = "zip"
+  source_file = "../api/main"
+  output_path = "../api/main.zip"
+}
+
+module "queries-api" {
+  depends_on                 = [data.archive_file.go_package]
+  source                     = "terraform-aws-modules/lambda/aws"
+  description                = "API to execute read queries"
+  function_name              = "queries-api"
+  handler                    = "main"
+  runtime                    = "go1.x"
+  create_package             = false
+  local_existing_package     = "../api/main.zip"
+  create_lambda_function_url = true
+  attach_policy              = true
+  policy                     = aws_iam_policy.api-policy.arn
+  timeout                    = 300
+  memory_size                = 1024
 }

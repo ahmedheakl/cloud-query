@@ -22,7 +22,7 @@ variable "s3_target_file" {
 variable "target_file_path" {
   type        = string
   description = "Path of file to be uploaded for querying"
-  default     = "./layoffs_data.csv"
+  default     = "../layoffs_data.csv"
   nullable    = false
 }
 

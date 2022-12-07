@@ -48,3 +48,26 @@ resource "aws_iam_role_policy_attachment" "glue-policy-attach" {
   policy_arn = aws_iam_policy.glue-policy.arn
 }
 
+resource "aws_iam_policy" "api-policy" {
+  name = "api-policy"
+  policy = jsonencode(
+    {
+      Version = "2012-10-17",
+      Statement = [
+        {
+          Effect : "Allow",
+          Action : [
+            "lambda:*",
+            "logs:*",
+            "cloudwatch:*",
+            "athena:*",
+            "glue:*",
+            "s3:*"
+          ],
+          Resource : ["*"]
+        }
+      ]
+    }
+  )
+}
+
