@@ -1,0 +1,19 @@
+services:
+  redis:
+    image: redis
+    command: "redis-server"
+    expose:
+      - 6379
+  
+  api:
+    depends_on:
+      - redis
+    build: ./api/.
+    environment:
+      - host=terraform-20221225193546949200000001.clgu6fwjxdcc.me-south-1.rds.amazonaws.com
+      - redis=redis:6379
+      - database=testdb
+      - username=postgres
+      - password=postgres
+    ports:
+      - 8080:8080
