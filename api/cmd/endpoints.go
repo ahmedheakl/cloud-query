@@ -33,11 +33,13 @@ func CustomQuery(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Write(resp)
 }
 
 func Signin(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	// decode request body into User struct instance `user`
 	var user pkg.User
 	err := json.NewDecoder(r.Body).Decode(&user)
@@ -79,12 +81,12 @@ func Signin(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		resp, _ = json.Marshal(map[string]bool{"response": false})
 	}
-
 	w.Write(resp)
 }
 
 func Signup(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	// decode request body into User struct instance `user`
 	var user pkg.User
 	err := json.NewDecoder(r.Body).Decode(&user)
@@ -137,6 +139,7 @@ func AddItem(w http.ResponseWriter, r *http.Request) {
 	} else {
 		w.WriteHeader(http.StatusOK)
 	}
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 }
 
 func RemoveItem(w http.ResponseWriter, r *http.Request) {
@@ -162,6 +165,7 @@ func RemoveItem(w http.ResponseWriter, r *http.Request) {
 	} else {
 		w.WriteHeader(http.StatusOK)
 	}
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 }
 
 func CheckItems(w http.ResponseWriter, r *http.Request) {
@@ -204,6 +208,7 @@ func CheckItems(w http.ResponseWriter, r *http.Request) {
 		response, _ := json.Marshal(cartItems)
 		w.Write(response)
 	}
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 }
 
 func Checkout(w http.ResponseWriter, r *http.Request) {
@@ -238,4 +243,5 @@ func Checkout(w http.ResponseWriter, r *http.Request) {
 
 	// remove cart from redis if write was successful
 	pkg.RemoveCart(cookie)
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 }
