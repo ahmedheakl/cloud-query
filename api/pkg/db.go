@@ -6,9 +6,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 
+	log "github.com/MohamedAbdeen21/cloud-store/logger"
 	"github.com/go-redis/redis/v8"
 	_ "github.com/lib/pq" // import declerations/initializations only
 )
@@ -65,48 +67,67 @@ type Response struct {
 }
 
 // general RDS postgreSQL database
-func GetOrCreateDB() (*sql.DB, error) {
+func getOrCreateDB() (*sql.DB, error) {
 	var err error
-
 	if db == nil {
+		log.Info.Println("connecting to database ...")
 		db, err = sql.Open("postgres", conn)
 		if err != nil {
+			log.Fatal.Printf("can't connect to database, error: %s", err.Error())
 			return nil, err
 		}
+		_, err := db.Exec("SELECT 1")
+		if err != nil {
+			log.Fatal.Printf("can't connect to database, error: %s", err.Error())
+			return nil, err
+		}
+		log.Info.Println("successfully connected to database!")
 	}
 	return db, nil
 }
 
 // used for cookie-to-email translation
-func GetOrCreateCache() *redis.Client {
+func getOrCreateCache() (*redis.Client, error) {
 	if dbCache == nil {
 		dbCache = redis.NewClient(&redis.Options{
 			Addr:     redisConnection,
 			Password: "",
 			DB:       0, // default database, takes values from 0-15 inclusive
 		})
+		_, err := dbCache.Ping(context.Background()).Result()
+		if err != nil {
+			log.Fatal.Printf("can't connect to redis, error: %s", err.Error())
+			return nil, fmt.Errorf("can't connect to redis: %s", err.Error())
+		}
+		log.Info.Println("successfully connected to redis!")
 	}
-	return dbCache
+	return dbCache, nil
 }
 
 // used to cache shopping carts, shopping carts are stored in
 // primary database only when the purchase is made
-func GetOrCreateCarts() *redis.Client {
+func getOrCreateCarts() (*redis.Client, error) {
 	if cartsCache == nil {
 		cartsCache = redis.NewClient(&redis.Options{
 			Addr:     redisConnection,
 			Password: "",
 			DB:       1, // Database for shopping carts
 		})
+		_, err := cartsCache.Ping(context.Background()).Result()
+		if err != nil {
+			log.Fatal.Printf("can't connect to redis, error: %s", err.Error())
+			return nil, fmt.Errorf("can't connect to redis: %s", err.Error())
+		}
+		log.Info.Println("successfully connected to redis!")
 	}
-	return cartsCache
+	return cartsCache, nil
 }
 
 // used to execute a query that returns a result
 func ReturnQuery(query string, table string, args ...any) ([]byte, error) {
 	var response Response
 
-	db, err := GetOrCreateDB()
+	db, err := getOrCreateDB()
 	if err != nil {
 		return nil, err
 	}
@@ -179,7 +200,7 @@ func ReturnQuery(query string, table string, args ...any) ([]byte, error) {
 
 // used to execute a query that doesn't return a result
 func executeQuery(query string, args ...any) error {
-	db, err := GetOrCreateDB()
+	db, err := getOrCreateDB()
 	if err != nil {
 		return err
 	}
@@ -195,39 +216,31 @@ func executeQuery(query string, args ...any) error {
 
 // modify content of cart, can be used to add or remove items
 func modifyCart(pur Purchase, cookie string) (int, error) {
-	rdb := GetOrCreateCarts()
-	newVal, err := rdb.HIncrBy(context.Background(), cookie, pur.Item, int64(pur.Quantity)).Result()
+	rdb, _ := getOrCreateCarts()
+	newVal, err := rdb.HIncrBy(context.Background(), cookie, strconv.Itoa(pur.Item), int64(pur.Quantity)).Result()
 
 	// cart not found, create it
 	if err == redis.Nil {
 		_, err = rdb.HSet(context.Background(), cookie, pur.Item, pur.Quantity).Result() // returns 1 regardless of initial value
+		if err != nil {
+			log.Error.Printf("error creating cart: %s", err.Error())
+			return 0, err
+		}
 		newVal = int64(pur.Quantity)
 		rdb.Expire(context.Background(), cookie, time.Hour*24) // expires in 24 hours
 	}
 
 	// if quantity of an item is <= 0, remove the item from the cart
 	if newVal <= 0 {
-		rdb.HDel(context.Background(), cookie, pur.Item)
+		rdb.HDel(context.Background(), cookie, strconv.Itoa(pur.Item))
 	}
 
-	return int(newVal), err
-}
-
-// remove the cart completely
-func RemoveCart(cookie string) {
-	rdb := GetOrCreateCarts()
-	rdb.Del(context.Background(), cookie)
-}
-
-// add cookie-to-email mapping to redis
-func RegisterCookie(cookie string, email string) {
-	rdb := GetOrCreateCache()
-	rdb.Set(context.Background(), cookie, email, time.Hour*240)
+	return int(newVal), nil
 }
 
 // translate cookie into email
-func TranslateCookie(cookie string) (string, error) {
-	rdb := GetOrCreateCache()
+func translateCookie(cookie string) (string, error) {
+	rdb, _ := getOrCreateCache()
 	val, err := rdb.Get(context.Background(), cookie).Result()
 	if err == redis.Nil {
 		return val, fmt.Errorf("can't find email for cookie %s", cookie)

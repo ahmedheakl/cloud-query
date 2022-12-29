@@ -1,10 +1,12 @@
-const BASEURL = "http://127.0.0.1:5500/views/"
+const BASEURL = "http://127.0.0.1:5500/"
+const API = "https://faae-41-43-245-201.eu.ngrok.io"
 
 const navAuth = document.getElementById("nav-auth");
 let element; 
+
 if(localStorage.getItem("cookie") !== ''){
     navAuth.innerHTML = `
-        <a href="/views/templates/auth.html" id="logout-button">
+        <a href="/templates/auth.html" id="logout-button">
             <i class="glyphicon glyphicon-log-out" style="padding-right: 5px"></i>
             Logout
         </a>
@@ -18,7 +20,7 @@ if(localStorage.getItem("cookie") !== ''){
     
 }else{
     navAuth.innerHTML = `
-    <a href="/views/templates/auth.html" id="login-button">
+    <a href="/templates/auth.html" id="login-button">
         <i class="glyphicon glyphicon-log-in" style="padding-right: 5px"></i>
         Login
     </a>
@@ -56,11 +58,12 @@ async function getDataWithQuery(query, schema){
     let raw = `{"query":"${query}", "schema":"${schema}"}`;
     let requestOptions = {
         method: 'POST',
+        credentials: 'include',
         body: raw,
-        redirect: 'follow'
+        redirect: 'follow',
     };
     try{
-        let dataJson = await fetch("http://localhost:8080/query/", requestOptions)
+        let dataJson = await fetch(`${API}/query/`, requestOptions)
         data = await dataJson.json();
     }catch(error){
         console.log(error);
@@ -122,15 +125,16 @@ function createItemElements(data){
  * @returns {any}
  */
 async function addItemToCart(itemid){
-    let raw = `{"items": "${itemid}", "quantity": 1}`
+    let raw = `{"item": ${itemid}, "quantity": 1}`
     let requestOptions = {
+        credentials: 'include',
         method: 'POST',
         body: raw,
         redirect: 'follow'
     };
     
     try{
-        let rawResponse = fetch("http://localhost:8080/add/", requestOptions);
+        let rawResponse = fetch(`${API}/add/`, requestOptions);
         // let res = await rawResponse.text();
     }catch(error){
         console.log(error);
@@ -199,6 +203,9 @@ function setUpCartEventListeners(){
 
         // event listener for add buttons
         const addButton = element.getElementsByClassName("grid-item-button button-add")[0]
+        addButton.addEventListener("click", async function() {
+            await addItemToCart(elementId);
+        })
         addButton.addEventListener("click", async function(e){
             const itemsQuery = await getDataWithQuery(`select * from items where id=${elementId}`, "items");
             const item = itemsQuery[0];

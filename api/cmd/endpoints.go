@@ -1,65 +1,59 @@
 package cmd
 
 import (
-	"context"
 	"encoding/json"
-	"log"
 	"net/http"
 	"strconv"
+	"strings"
 	"time"
 
+	log "github.com/MohamedAbdeen21/cloud-store/logger"
 	"github.com/MohamedAbdeen21/cloud-store/pkg"
 	"github.com/lib/pq"
 )
+
+func InitConnections() error {
+	return pkg.InitConnections()
+}
 
 // needs all queries to return all columns of a table AND in the same order,
 // check structs at pkg/internal for the right order
 // TODO: return only the required columns and in any order
 func CustomQuery(w http.ResponseWriter, r *http.Request) {
+	pkg.SetHeaders(&w, "POST")
 	// Extract query from request body
 	var query pkg.Query
 	err := json.NewDecoder(r.Body).Decode(&query)
 	if err != nil {
-		w.Write([]byte(err.Error()))
-		log.Println(err.Error())
+		w.WriteHeader(http.StatusBadRequest)
+		log.Error.Printf("can't decode body of request, error: %s", err.Error())
+		return
 	}
-	log.Printf("Executing query %s", query.Sql)
+
+	log.Info.Printf("Executing query %s", query.Sql)
 
 	// execute query and return result
 	resp, err := pkg.ReturnQuery(query.Sql, query.Schema)
 	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		log.Println(err.Error())
+		w.WriteHeader(http.StatusInternalServerError)
+		log.Error.Printf("can't execute query:%s error:%s", query.Sql, err.Error())
 	}
 
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Write(resp)
 }
 
-func Signin(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Credentials", "true")
-	w.Header().Set("Access-Control-Allow-Headers", "Cpmtemt-Type, withCredentials")
-	w.Header().Set("Access-Control-Allow-Methods", "POST,GET,OPTIONS")
-
+func Login(w http.ResponseWriter, r *http.Request) {
+	pkg.SetHeaders(&w, "POST")
 	// decode request body into User struct instance `user`
 	var user pkg.User
 	err := json.NewDecoder(r.Body).Decode(&user)
 	if err != nil {
+		log.Error.Printf("can't decode body of request, error: %s", err.Error())
 		w.WriteHeader(http.StatusBadRequest)
+		return
 	}
 
-	// get value of cookie, generate new cookie if not found.
-	var cookie string
-	c, err := r.Cookie("goCookie")
-	if err != nil {
-		cookie = pkg.SetCookie(&w, user.Email)
-	} else {
-		cookie = c.Value
-		pkg.RegisterCookie(cookie, user.Email)
-	}
+	log.Info.Printf("logging in for user '%s' ...", user.Email)
 
 	// validate given email
 	if !pkg.IsValidEmail(user.Email) {
@@ -70,36 +64,61 @@ func Signin(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// validate login credentials
-	isValid, err := pkg.IsValidLogin(user)
+	isValid, errorMessage, err := pkg.IsValidLogin(user)
 	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		log.Println("Invalid login")
+		log.Error.Printf("verification query for '%s' failed", user.Email)
+		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
 
 	var resp []byte
-	if isValid {
-		w.WriteHeader(http.StatusAccepted)
-		resp, _ = json.Marshal(map[string]any{"response": true, "cookie": cookie})
+	if !isValid {
+		w.WriteHeader(http.StatusForbidden)
+		log.Info.Printf("login for user '%s' failed, %s", user.Email, errorMessage)
+		resp, _ = json.Marshal(map[string]any{"response": "false", "message": errorMessage})
 	} else {
-		w.WriteHeader(http.StatusBadRequest)
-		resp, _ = json.Marshal(map[string]bool{"response": false})
+		// get value of cookie, generate new cookie if not found.
+		var cookie string
+		c, err := r.Cookie("goCookie")
+		if err != nil {
+			// cookie = pkg.SetCookie(&w, user.Email)
+			log.Info.Printf("login successful for user '%s', generated cookie '%s'", user.Email, cookie)
+		} else {
+			cookie = c.Value
+			pkg.RegisterCookie(cookie, user.Email)
+			log.Info.Printf("login successful for user '%s', reused cookie '%s'", user.Email, cookie)
+		}
+
+		if isValid {
+			w.WriteHeader(http.StatusAccepted)
+			resp, _ = json.Marshal(map[string]any{"response": true, "cookie": cookie})
+		}
 	}
 	w.Write(resp)
 }
 
+// Logging out removes the cart
+func Logout(w http.ResponseWriter, r *http.Request) {
+	pkg.SetHeaders(&w, "POST")
+	// Must have cookie
+	cookie, err := pkg.RequireCookie(&w, r)
+	if err != nil {
+		return
+	}
+
+	pkg.RemoveCart(cookie)
+	pkg.RemoveCookie(cookie)
+}
+
 func Signup(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Credentials", "true")
-	w.Header().Set("Access-Control-Allow-Headers", "Cpmtemt-Type, withCredentials")
-	w.Header().Set("Access-Control-Allow-Methods", "POST,GET,OPTIONS")
+	pkg.SetHeaders(&w, "POST")
 	// decode request body into User struct instance `user`
 	var user pkg.User
 	err := json.NewDecoder(r.Body).Decode(&user)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte(err.Error()))
+		log.Error.Printf("can't decode body of request, error: %s", err.Error())
+		return
 	}
 
 	// validate given email
@@ -114,25 +133,24 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 	err = pkg.AddUser(user)
 
 	if err != nil {
-		log.Println(err.Error())
-		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte(err.Error()))
+		w.WriteHeader(http.StatusConflict)
+		resp, _ := json.Marshal(map[string]string{"message": "email already exists"})
+		w.Write(resp)
 	} else {
-		pkg.SetCookie(&w, user.Email)
+		// pkg.SetCookie(&w, user.Email)
 		w.WriteHeader(http.StatusCreated)
 	}
 }
 
 func AddItem(w http.ResponseWriter, r *http.Request) {
+	pkg.SetHeaders(&w, "POST")
 	// Decode request body into Purchase struct
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Credentials", "true")
-	w.Header().Set("Access-Control-Allow-Headers", "Cpmtemt-Type, withCredentials")
-	w.Header().Set("Access-Control-Allow-Methods", "POST,GET,OPTIONS")
 	var pur pkg.Purchase
 	err := json.NewDecoder(r.Body).Decode(&pur)
 	if err != nil {
+		log.Error.Printf("can't decode body of request, error: %s", err.Error())
 		w.WriteHeader(http.StatusBadRequest)
+		return
 	}
 
 	// Must have cookie
@@ -145,23 +163,21 @@ func AddItem(w http.ResponseWriter, r *http.Request) {
 	_, err = pkg.AddToCart(pur, cookie)
 
 	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte(err.Error()))
+		w.WriteHeader(http.StatusInternalServerError)
 	} else {
 		w.WriteHeader(http.StatusOK)
 	}
 }
 
 func RemoveItem(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Credentials", "true")
-	w.Header().Set("Access-Control-Allow-Headers", "Cpmtemt-Type, withCredentials")
-	w.Header().Set("Access-Control-Allow-Methods", "POST,GET,OPTIONS")
+	pkg.SetHeaders(&w, "POST")
 	// decode request into Purchase struct
 	var pur pkg.Purchase
 	err := json.NewDecoder(r.Body).Decode(&pur)
 	if err != nil {
+		log.Error.Printf("can't decode body of request, error: %s", err.Error())
 		w.WriteHeader(http.StatusBadRequest)
+		return
 	}
 
 	// must have cookie
@@ -174,21 +190,14 @@ func RemoveItem(w http.ResponseWriter, r *http.Request) {
 	_, err = pkg.RemoveFromCart(pur, cookie)
 
 	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte(err.Error()))
+		w.WriteHeader(http.StatusInternalServerError)
 	} else {
 		w.WriteHeader(http.StatusOK)
 	}
 }
 
 func CheckItems(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Credentials", "true")
-	w.Header().Set("Access-Control-Allow-Headers", "Cpmtemt-Type, withCredentials")
-	w.Header().Set("Access-Control-Allow-Methods", "POST,GET,OPTIONS")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-
-	rdb := pkg.GetOrCreateCarts()
-
+	pkg.SetHeaders(&w, "GET")
 	// must have cookie
 	cookie, err := pkg.RequireCookie(&w, r)
 	if err != nil {
@@ -196,7 +205,7 @@ func CheckItems(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// get all items and return as json
-	cart, err := rdb.HGetAll(context.Background(), cookie).Result()
+	cart, err := pkg.GetCart(cookie)
 	ids := []int{}
 	for id := range cart {
 		int_id, _ := strconv.Atoi(id)
@@ -219,8 +228,8 @@ func CheckItems(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte(err.Error()))
+		w.WriteHeader(http.StatusInternalServerError)
+		log.Error.Printf("error fetching cart for user %s", cookie)
 	} else {
 		w.WriteHeader(http.StatusOK)
 		response, _ := json.Marshal(cartItems)
@@ -229,40 +238,31 @@ func CheckItems(w http.ResponseWriter, r *http.Request) {
 }
 
 func Checkout(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Credentials", "true")
-	w.Header().Set("Access-Control-Allow-Headers", "Cpmtemt-Type, withCredentials")
-	w.Header().Set("Access-Control-Allow-Methods", "POST,GET,OPTIONS")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-
-	rdb := pkg.GetOrCreateCarts()
-
+	pkg.SetHeaders(&w, "GET")
 	// must have cookie
 	cookie, err := pkg.RequireCookie(&w, r)
 	if err != nil {
 		return
 	}
 
-	// get all items in shooping cart from redis
-	items := rdb.HGetAll(context.Background(), cookie).Val()
-	for k, v := range items {
-		println(k, v)
-	}
-
+	// get all items in shopping cart from redis
+	items, _ := pkg.GetCart(cookie)
 	if len(items) == 0 {
-		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte("Cart is empty"))
+		w.WriteHeader(http.StatusNotFound)
+		resp, _ := json.Marshal(map[string]string{"message": "cart is empty"})
+		w.Write(resp)
 		return
 	}
 
-	// write the items to the database
-	err = pkg.WriteThrough(cookie, items, time.Now())
+	// write the items to the database and remove cart from cache
+	err = pkg.WriteCart(cookie, items, time.Now())
 	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte(err.Error()))
-		log.Println(err.Error())
+		w.WriteHeader(http.StatusNotFound)
 		return
 	}
+}
 
-	// remove cart from redis if write was successful
-	pkg.RemoveCart(cookie)
+func GenerateCookie(w http.ResponseWriter, r *http.Request) {
+	pkg.SetHeaders(&w, "GET")
+	pkg.SetCookie(&w, strings.Split(r.URL.Path, "/")[2])
 }

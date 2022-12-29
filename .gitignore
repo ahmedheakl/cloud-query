@@ -4,3 +4,4 @@ database/terraform.tfstate.backup
 database/.terraform*
 docs/build
 .vscode
+database/users.sql
