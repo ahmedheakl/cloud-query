@@ -37,12 +37,12 @@ resource "aws_db_instance" "default" {
 
 }
 
-resource "null_resouce" "init_database" {
+resource "null_resource" "init_database" {
   provisioner "local-exec" { 
     command = "python3 init.py"
     environment = {
       host = aws_db_instance.default.address
-      database = aws_db_instance.db_name
+      database = aws_db_instance.default.db_name
       username = var.username
       password = var.password
      }
