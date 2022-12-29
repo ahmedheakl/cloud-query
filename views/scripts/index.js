@@ -138,7 +138,7 @@ async function addItemToCart(itemid){
 }
 
 /**
- * 描述
+ * update cart UI with items found in `cartItems`
  * @param {object} cartItems list of items 
  * @returns {any}
  */
