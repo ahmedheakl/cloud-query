@@ -10,21 +10,28 @@
 
 <body>
     <nav class="nav">
-        <div>
-            <a href="/">
+        <div class="main-div">
+            <a href="/views/index.html">
                 <i class="glyphicon glyphicon-cloud"></i>
                 CloudQuery
             </a>
         </div>
-        <div>
-            <a href="/"><i class="glyphicon glyphicon-home" style="padding-right: 5px"></i>Home</a>
-            <a href="/"><i class="glyphicon glyphicon-info-sign" style="padding-right: 5px"></i>About</a>
-            <a href="/"><i class="glyphicon glyphicon-log-out" style="padding-right: 5px"></i>Logout</a>
+        <div class="main-div" id="nav-auth">
         </div>
-        <div>
-            <button><i class="glyphicon glyphicon-search" style="padding-right: 5px;"></i></button>
+        <div class="search-container">
+            <input class="search-input" name="search" id="search-input" type="search" placeholder="Search a product ...">
+            <div class="filter-container">
+                <button class="dropbtn"><i class="glyphicon glyphicon-filter" style="padding-right: 5px"></i></button>
+                <div class="dropdown-content" id="filter-menu">
+
+                </div>
+            </div>
         </div>
-        <a class="material-icons shopping-cart">shopping_cart</a>
+        <a class="material-icons shopping-cart-icon" id="shopping-cart-button">shopping_cart</a>
+        <div class="shopping-cart" id="cart">
+            There is nothing in your cart.
+        </div>
+        
     </nav>
     <div class="container">
         <div class="grid" id="main-grid">

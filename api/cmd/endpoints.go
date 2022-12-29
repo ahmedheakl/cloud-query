@@ -40,6 +40,10 @@ func CustomQuery(w http.ResponseWriter, r *http.Request) {
 func Signin(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Credentials", "true")
+	w.Header().Set("Access-Control-Allow-Headers", "Cpmtemt-Type, withCredentials")
+	w.Header().Set("Access-Control-Allow-Methods", "POST,GET,OPTIONS")
+
 	// decode request body into User struct instance `user`
 	var user pkg.User
 	err := json.NewDecoder(r.Body).Decode(&user)
@@ -87,6 +91,9 @@ func Signin(w http.ResponseWriter, r *http.Request) {
 func Signup(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Credentials", "true")
+	w.Header().Set("Access-Control-Allow-Headers", "Cpmtemt-Type, withCredentials")
+	w.Header().Set("Access-Control-Allow-Methods", "POST,GET,OPTIONS")
 	// decode request body into User struct instance `user`
 	var user pkg.User
 	err := json.NewDecoder(r.Body).Decode(&user)
@@ -118,6 +125,10 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 
 func AddItem(w http.ResponseWriter, r *http.Request) {
 	// Decode request body into Purchase struct
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Credentials", "true")
+	w.Header().Set("Access-Control-Allow-Headers", "Cpmtemt-Type, withCredentials")
+	w.Header().Set("Access-Control-Allow-Methods", "POST,GET,OPTIONS")
 	var pur pkg.Purchase
 	err := json.NewDecoder(r.Body).Decode(&pur)
 	if err != nil {
@@ -139,10 +150,13 @@ func AddItem(w http.ResponseWriter, r *http.Request) {
 	} else {
 		w.WriteHeader(http.StatusOK)
 	}
-	w.Header().Set("Access-Control-Allow-Origin", "*")
 }
 
 func RemoveItem(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Credentials", "true")
+	w.Header().Set("Access-Control-Allow-Headers", "Cpmtemt-Type, withCredentials")
+	w.Header().Set("Access-Control-Allow-Methods", "POST,GET,OPTIONS")
 	// decode request into Purchase struct
 	var pur pkg.Purchase
 	err := json.NewDecoder(r.Body).Decode(&pur)
@@ -165,10 +179,14 @@ func RemoveItem(w http.ResponseWriter, r *http.Request) {
 	} else {
 		w.WriteHeader(http.StatusOK)
 	}
-	w.Header().Set("Access-Control-Allow-Origin", "*")
 }
 
 func CheckItems(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Credentials", "true")
+	w.Header().Set("Access-Control-Allow-Headers", "Cpmtemt-Type, withCredentials")
+	w.Header().Set("Access-Control-Allow-Methods", "POST,GET,OPTIONS")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
 	rdb := pkg.GetOrCreateCarts()
 
 	// must have cookie
@@ -208,10 +226,14 @@ func CheckItems(w http.ResponseWriter, r *http.Request) {
 		response, _ := json.Marshal(cartItems)
 		w.Write(response)
 	}
-	w.Header().Set("Access-Control-Allow-Origin", "*")
 }
 
 func Checkout(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Credentials", "true")
+	w.Header().Set("Access-Control-Allow-Headers", "Cpmtemt-Type, withCredentials")
+	w.Header().Set("Access-Control-Allow-Methods", "POST,GET,OPTIONS")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
 	rdb := pkg.GetOrCreateCarts()
 
 	// must have cookie
@@ -243,5 +265,4 @@ func Checkout(w http.ResponseWriter, r *http.Request) {
 
 	// remove cart from redis if write was successful
 	pkg.RemoveCart(cookie)
-	w.Header().Set("Access-Control-Allow-Origin", "*")
 }

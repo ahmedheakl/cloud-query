@@ -1,4 +1,4 @@
+.env_
 database/terraform.tfstate
 database/terraform.tfstate.backup
 database/.terraform*
-.env_

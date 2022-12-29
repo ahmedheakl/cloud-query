@@ -28,8 +28,8 @@ func main() {
 	r.HandleFunc("/signup/", cmd.Signup).Methods("POST")
 	r.HandleFunc("/query/", cmd.CustomQuery).Methods("POST")
 
-	r.HandleFunc("/add/", cmd.AddItem).Methods("PUT")
-	r.HandleFunc("/remove/", cmd.RemoveItem).Methods("PUT")
+	r.HandleFunc("/add/", cmd.AddItem).Methods("POST")
+	r.HandleFunc("/remove/", cmd.RemoveItem).Methods("POST")
 	r.HandleFunc("/items/", cmd.CheckItems).Methods("GET")
 	r.HandleFunc("/checkout/", cmd.Checkout).Methods("GET")
 

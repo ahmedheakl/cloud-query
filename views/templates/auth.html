@@ -11,8 +11,8 @@
 <body>
     
     <nav class="nav">
-        <div>
-            <a href="/">
+        <div class="main-div">
+            <a href="/views/index.html">
                 <i class="glyphicon glyphicon-cloud"></i>
                 CloudQuery
             </a>
@@ -20,11 +20,11 @@
     </nav> 
     <div class="auth-container" id="container">
         <div class="form-container sign-up-container">
-            <form action="#">
+            <form action="#" id="signup-form">
                 <h1>Create Account</h1>
                 <input type="text" placeholder="Name" />
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+                <input type="email" placeholder="Email" id="signup-email"/>
+                <input type="password" placeholder="Password" id="signup-password"/>
                 <button>Sign Up</button>
             </form>
         </div>
@@ -53,5 +53,5 @@
         </div>
     </div>
 </body>
-<script src="../scripts/login.js"></script>
+<script src="../scripts/auth.js"></script>
 </html>

@@ -31,7 +31,13 @@ body {
   justify-content: space-between;
   align-items: center;
   box-shadow: var(--box-shadow);
+  
 }
+
+.nav div:first-child{
+  padding-left: 2em;
+}
+
 
 .nav a{
   text-decoration: none;
@@ -39,11 +45,11 @@ body {
   padding: 2vh 0.6vh;
 }
 
-.nav a:hover{
+.nav .main-div a:hover,
+.nav .shopping-cart-icon:hover{
   text-decoration: none;
   color: white;
   background-color: var(--red);
-  color: white;
   padding: 2.2vh 0.6vh;
   border-radius: 0px 0px 5px 5px;
 }
@@ -55,13 +61,28 @@ body {
   color: black;
 }
 
-.nav button i:hover{
-  font-size: 25px;
-  color: var(--red);
+.nav input[type="search"]{
+  border-radius: 25px;
+  padding: 5px 10px;
+  font-size: 14px;
+  border: none;
+  margin: 0px;
+  border: 1px solid grey;
+}
+
+.nav input[type="search"]::placeholder {
+  color: #bbb;
+}
+
+.nav input[type="search"]:focus {
+  box-shadow: 0 0 3px 0 var(--red);
+  border-color: var(--red);
+  outline: none;
 }
 
 /* set shopping-cart to be fixed at the right bottom of the screen */
-.shopping-cart {
+.shopping-cart-icon {
+  cursor: pointer;
   position: fixed;
   bottom: 1%;
   right: 10px;
@@ -77,6 +98,133 @@ body {
   z-index: 1;
 }
 
+.shopping-cart-icon:hover{
+  transform: translateY(-5px);
+}
+
+
+.shopping-cart{
+  display: none; 
+  position: fixed;
+  bottom: 10%;
+  right: 50px;
+  background-color: #FFF;
+  border: 1px solid #CCC;
+  padding: 10px;
+  font-size: 18px;
+  font-style: bold;
+  border-radius: 10px 10px 0px 10px;
+  text-align: center;
+  z-index: 2;
+  flex-direction: column;
+  justify-content: right;
+}
+
+.shopping-cart th{
+  background-color: var(--red);
+  color: white;
+  margin: 0px 2px;
+}
+.shopping-cart th, .shopping-cart td{
+  padding: 0px 5px;
+}
+
+.shopping-cart tr:first-child{
+  border-bottom: 1px white solid;
+}
+
+.shopping-cart tr:last-child{
+  font-weight: bold;
+  border-top: 1px solid black;
+}
+
+.shopping-cart img{
+  border: 1px solid whitesmoke;
+  width: 30px;
+  height: 30px;
+}
+
+.shopping-cart button{
+  border-radius: 20px;
+	border: 1px solid var(--red);
+	background-color: #FF4B2B;
+	color: white;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+.shopping-cart button:active {
+	transform: scale(0.95);
+}
+
+.shopping-cart button:focus {
+	outline: none;
+}
+
+.shopping-cart  button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: inherit;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.filter-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 0px 10px 10px 10px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--red);
+  color: white;
+  font-size: inherit;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.filter-container:hover .dropdown-content {
+  display: block;
+}
+
+.filter-container:hover .dropbtn {
+  background-color: var(--red);
+  color: white;
+}
+
+
+
+/*****BODY*****/
 .container{
   background-color: transparent;
 }
@@ -411,4 +559,10 @@ body {
 
 .auth-container.right-panel-active .overlay-right {
 	transform: translateX(20%);
+}
+
+@media (max-width: 600px) {
+  .nav{
+    background-color: red !important;
+  }
 }

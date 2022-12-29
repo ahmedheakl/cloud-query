@@ -89,7 +89,7 @@ func RequireCookie(w *http.ResponseWriter, r *http.Request) (string, error) {
 	writer := *w
 	c, err := r.Cookie("goCookie")
 	if err != nil {
-		writer.WriteHeader(http.StatusBadRequest)
+		writer.WriteHeader(http.StatusUnauthorized)
 		writer.Write([]byte("Please login first!"))
 		return "", err
 	}
