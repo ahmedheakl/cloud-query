@@ -1,14 +1,19 @@
 package pkg
 
 import (
+	"context"
 	"encoding/json"
-	"log"
 	"net/http"
 	"net/mail"
+	"os"
+	"strings"
 	"time"
 
+	log "github.com/MohamedAbdeen21/cloud-store/logger"
 	"github.com/google/uuid"
 )
+
+var frontendOrigin string = strings.Split(os.Getenv("frontendOrigin"), "=")[0]
 
 type Query struct {
 	Sql    string `json:"query"`
@@ -21,8 +26,8 @@ type User struct {
 }
 
 type Purchase struct {
-	Item     string `json:"item"`
-	Quantity int    `json:"quantity"`
+	Item     int `json:"item"`
+	Quantity int `json:"quantity"`
 }
 
 type Cart struct {
@@ -34,28 +39,66 @@ func (c *Cart) SetQuantity(quantity int) {
 	c.Quantity = quantity
 }
 
+func InitConnections() error {
+	_, err := getOrCreateCache()
+	if err != nil {
+		return err
+	}
+
+	_, err = getOrCreateCarts()
+	if err != nil {
+		return err
+	}
+
+	_, err = getOrCreateDB()
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 // check if provided credentials are signed up
-func IsValidLogin(user User) (bool, error) {
+func IsValidLogin(user User) (bool, string, error) {
 	result, err := ReturnQuery(
 		`SELECT 1
 		FROM users
 		WHERE email = $1 AND sha256((salt || $2)::bytea) = hashed_password::bytea`, "verification",
 		user.Email, user.Password)
 	if err != nil {
-		log.Println(err.Error())
-		return false, err
+		log.Error.Printf("error while executing login query for email error '%s'", user.Email)
+		return false, "internal error", err
 	}
 
 	var response Verification
 	_ = json.Unmarshal(result, &response)
-	return response.Value == 1, nil
+
+	// see if the problem is from email or password
+	if response.Value != 0 {
+		result, err = ReturnQuery(
+			`SELECT 1
+			FROM users
+			WHERE email = $1`, "verification", user.Email)
+		if err != nil {
+			return false, "internal error", err
+		}
+
+		var email_response Verification
+		_ = json.Unmarshal(result, &email_response)
+		// email exists, problem in password
+		if response.Value == 1 {
+			return false, "Incorrect password", nil
+		} else {
+			return false, "Email is not registered", nil
+		}
+	}
+	return response.Value == 1, "", nil
 }
 
 // check that string provided is a valid email
 func IsValidEmail(email string) bool {
 	_, err := mail.ParseAddress(email)
 	if err != nil {
-		log.Println(err.Error())
+		log.Info.Printf("email provided '%s' is not a valid email", email)
 	}
 	return err == nil
 }
@@ -69,6 +112,10 @@ func AddUser(user User) error {
 		VALUES($1,$2,sha256(($2 || $3)::bytea))`,
 		user.Email, salt, user.Password)
 
+	if err != nil {
+		log.Info.Printf("sign up failed. Email '%s' already exists", user.Email)
+	}
+
 	return err
 }
 
@@ -77,11 +124,24 @@ func SetCookie(w *http.ResponseWriter, email string) string {
 	val := uuid.NewString()
 	RegisterCookie(val, email)
 	http.SetCookie(*w, &http.Cookie{
-		Name:  "goCookie",
-		Value: val,
-		Path:  "/",
+		Name:     "goCookie",
+		Value:    val,
+		SameSite: http.SameSiteNoneMode,
+		Secure:   true,
+		Path:     "/",
 	})
 	return val
+}
+
+// add cookie-to-email mapping to redis
+func RegisterCookie(cookie string, email string) {
+	rdb, _ := getOrCreateCache()
+	rdb.Set(context.Background(), cookie, email, time.Hour*240)
+}
+
+func RemoveCookie(cookie string) {
+	rdb, _ := getOrCreateCache()
+	rdb.Del(context.Background(), cookie)
 }
 
 // get value of cookie, ask to login if not found
@@ -90,7 +150,8 @@ func RequireCookie(w *http.ResponseWriter, r *http.Request) (string, error) {
 	c, err := r.Cookie("goCookie")
 	if err != nil {
 		writer.WriteHeader(http.StatusUnauthorized)
-		writer.Write([]byte("Please login first!"))
+		resp, _ := json.Marshal(map[string]string{"message": "Please login first!"})
+		writer.Write(resp)
 		return "", err
 	}
 	return c.Value, nil
@@ -101,6 +162,11 @@ func AddToCart(pur Purchase, cookie string) (int, error) {
 	return modifyCart(pur, cookie)
 }
 
+func GetCart(cookie string) (map[string]string, error) {
+	rdb, _ := getOrCreateCarts()
+	return rdb.HGetAll(context.Background(), cookie).Result()
+}
+
 // remove quantity of item from cart,
 // update quantity to zero or less to remove from cart
 func RemoveFromCart(pur Purchase, cookie string) (int, error) {
@@ -109,8 +175,8 @@ func RemoveFromCart(pur Purchase, cookie string) (int, error) {
 }
 
 // translate cookie to user email, and write the carts info to database
-func WriteThrough(cookie string, items map[string]string, timestamp time.Time) error {
-	email, err := TranslateCookie(cookie)
+func WriteCart(cookie string, items map[string]string, timestamp time.Time) error {
+	email, err := translateCookie(cookie)
 	if err != nil {
 		return err
 	}
@@ -121,8 +187,25 @@ func WriteThrough(cookie string, items map[string]string, timestamp time.Time) e
 			VALUES((SELECT id FROM users WHERE email = $1), $2, $3, $4)`,
 			email, item, quantity, timestamp)
 		if err != nil {
+			log.Error.Printf("error while executing cart query for {%s,%s,%s,%s}", email, item, quantity, timestamp)
 			return err
 		}
 	}
+
+	RemoveCart(cookie)
 	return nil
+}
+
+// remove the cart completely
+func RemoveCart(cookie string) {
+	rdb, _ := getOrCreateCarts()
+	rdb.Del(context.Background(), cookie)
+}
+
+func SetHeaders(w *http.ResponseWriter, method string) {
+	(*w).Header().Set("Access-Control-Allow-Origin", frontendOrigin)
+	(*w).Header().Set("Access-Control-Allow-Credentials", "true")
+	(*w).Header().Set("Access-Control-Allow-Headers", "Content-Type, withCredentials")
+	(*w).Header().Set("Access-Control-Allow-Methods", method)
+	(*w).Header().Set("Content-Type", "application/json")
 }

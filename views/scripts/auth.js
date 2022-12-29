@@ -1,4 +1,5 @@
-BASEURL = "http://127.0.0.1:5500/views/"
+const BASEURL = "http://127.0.0.1:5500/"
+const API = "https://faae-41-43-245-201.eu.ngrok.io"
 
 if(localStorage.getItem("cookie") !== ''){
     location.replace(BASEURL)
@@ -26,15 +27,18 @@ async function login(email, password){
     let  requestOptions = {
         method: 'POST',
         body: raw,
+        credentials: 'include',
         redirect: 'follow'
     };
     
     try{
-        let rawResponse = await fetch("http://localhost:8080/signin/", requestOptions);
+        let rawResponse = await fetch(`${API}/login/`, requestOptions);
         let res = await rawResponse.json();
         console.log(res);
         if(res.response == true){
-            localStorage.setItem("cookie", res.cookie)
+            res.redirect = `${API}/cookie/${email}/`
+            // for login and logout purposes. Generate your own cookie because the API endpoint doesn't return a cookie anymore.
+            localStorage.setItem("cookie", res.cookie); 
             return true;
         }
     }catch(error){
@@ -50,14 +54,18 @@ async function singUp(email, password){
     let  requestOptions = {
         method: 'POST',
         body: raw,
+        credentials: 'include',
         redirect: 'follow'
     };
     
     try{
-        let rawResponse = await fetch("http://localhost:8080/signup/", requestOptions);
+        let rawResponse = await fetch(`${API}/signup/`, requestOptions);
         let res = await rawResponse.json();
         console.log(res);
         if(res.response == true){
+            res.redirect = `${API}/cookie/${email}/`
+            // for login and logout purposes. Generate your own cookie because the API endpoint doesn't return a cookie anymore.
+            localStorage.setItem("cookie", res.cookie); 
             return true;
         }
     }catch(error){

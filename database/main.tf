@@ -34,4 +34,17 @@ resource "aws_db_instance" "default" {
   storage_type           = "gp2"
   publicly_accessible    = true
   vpc_security_group_ids = [aws_security_group.sg.id]
+
+}
+
+resource "null_resouce" "init_database" {
+  provisioner "local-exec" { 
+    command = "python3 init.py"
+    environment = {
+      host = aws_db_instance.default.address
+      database = aws_db_instance.db_name
+      username = var.username
+      password = var.password
+     }
+  }
 }
