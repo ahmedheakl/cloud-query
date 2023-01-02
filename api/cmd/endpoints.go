@@ -27,6 +27,8 @@ func CustomQuery(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		log.Error.Printf("can't decode body of request, error: %s", err.Error())
+		resp, _ := json.Marshal(map[string]any{"response": false, "message": "invalid request body"})
+		w.Write(resp)
 		return
 	}
 
@@ -37,6 +39,9 @@ func CustomQuery(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		log.Error.Printf("can't execute query:%s error:%s", query.Sql, err.Error())
+		resp, _ := json.Marshal(map[string]any{"response": false, "message": "internal error"})
+		w.Write(resp)
+		return
 	}
 
 	w.Write(resp)
@@ -50,6 +55,8 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Error.Printf("can't decode body of request, error: %s", err.Error())
 		w.WriteHeader(http.StatusBadRequest)
+		resp, _ := json.Marshal(map[string]any{"response": false, "message": "invalid request body"})
+		w.Write(resp)
 		return
 	}
 
@@ -58,7 +65,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	// validate given email
 	if !pkg.IsValidEmail(user.Email) {
 		w.WriteHeader(http.StatusBadRequest)
-		resp, _ := json.Marshal(map[string]string{"response": "the email provided is not a valid email"})
+		resp, _ := json.Marshal(map[string]any{"response": false, "message": "the email provided is not a valid email"})
 		w.Write(resp)
 		return
 	}
@@ -68,6 +75,8 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Error.Printf("verification query for '%s' failed", user.Email)
 		w.WriteHeader(http.StatusInternalServerError)
+		resp, _ := json.Marshal(map[string]any{"response": false, "message": "internal error"})
+		w.Write(resp)
 		return
 	}
 
@@ -75,13 +84,12 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	if !isValid {
 		w.WriteHeader(http.StatusForbidden)
 		log.Info.Printf("login for user '%s' failed, %s", user.Email, errorMessage)
-		resp, _ = json.Marshal(map[string]any{"response": "false", "message": errorMessage})
+		resp, _ = json.Marshal(map[string]any{"response": false, "message": errorMessage})
 	} else {
 		// get value of cookie, generate new cookie if not found.
 		var cookie string
 		c, err := r.Cookie("goCookie")
 		if err != nil {
-			// cookie = pkg.SetCookie(&w, user.Email)
 			log.Info.Printf("login successful for user '%s', generated cookie '%s'", user.Email, cookie)
 		} else {
 			cookie = c.Value
@@ -91,7 +99,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 		if isValid {
 			w.WriteHeader(http.StatusAccepted)
-			resp, _ = json.Marshal(map[string]any{"response": true, "cookie": cookie})
+			resp, _ = json.Marshal(map[string]any{"response": true, "message": "user logged in successfully"})
 		}
 	}
 	w.Write(resp)
@@ -99,15 +107,17 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 // Logging out removes the cart
 func Logout(w http.ResponseWriter, r *http.Request) {
-	pkg.SetHeaders(&w, "POST")
+	pkg.SetHeaders(&w, "GET")
 	// Must have cookie
 	cookie, err := pkg.RequireCookie(&w, r)
 	if err != nil {
 		return
 	}
-
 	pkg.RemoveCart(cookie)
 	pkg.RemoveCookie(cookie)
+	pkg.SetCookie(&w, "")
+	resp, _ := json.Marshal(map[string]any{"response": true, "message": "user logged out successfully"})
+	w.Write(resp)
 }
 
 func Signup(w http.ResponseWriter, r *http.Request) {
@@ -118,13 +128,15 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		log.Error.Printf("can't decode body of request, error: %s", err.Error())
+		resp, _ := json.Marshal(map[string]any{"response": false, "message": "invalid request body"})
+		w.Write(resp)
 		return
 	}
 
 	// validate given email
 	if !pkg.IsValidEmail(user.Email) {
 		w.WriteHeader(http.StatusBadRequest)
-		resp, _ := json.Marshal(map[string]string{"response": "the email provided is not a valid email"})
+		resp, _ := json.Marshal(map[string]any{"response": false, "message": "the email provided is not a valid email"})
 		w.Write(resp)
 		return
 	}
@@ -134,11 +146,13 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		w.WriteHeader(http.StatusConflict)
-		resp, _ := json.Marshal(map[string]string{"message": "email already exists"})
+		resp, _ := json.Marshal(map[string]any{"response": false, "message": "email already exists"})
 		w.Write(resp)
 	} else {
 		// pkg.SetCookie(&w, user.Email)
 		w.WriteHeader(http.StatusCreated)
+		resp, _ := json.Marshal(map[string]any{"response": true, "message": "user created successfully"})
+		w.Write(resp)
 	}
 }
 
@@ -150,6 +164,8 @@ func AddItem(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Error.Printf("can't decode body of request, error: %s", err.Error())
 		w.WriteHeader(http.StatusBadRequest)
+		resp, _ := json.Marshal(map[string]any{"response": false, "message": "invalid request body"})
+		w.Write(resp)
 		return
 	}
 
@@ -164,8 +180,12 @@ func AddItem(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
+		resp, _ := json.Marshal(map[string]any{"response": false, "message": "internal error"})
+		w.Write(resp)
 	} else {
 		w.WriteHeader(http.StatusOK)
+		resp, _ := json.Marshal(map[string]any{"response": true, "message": "item added successfully"})
+		w.Write(resp)
 	}
 }
 
@@ -177,6 +197,8 @@ func RemoveItem(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Error.Printf("can't decode body of request, error: %s", err.Error())
 		w.WriteHeader(http.StatusBadRequest)
+		resp, _ := json.Marshal(map[string]any{"response": false, "message": "invalid request body"})
+		w.Write(resp)
 		return
 	}
 
@@ -191,8 +213,12 @@ func RemoveItem(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
+		resp, _ := json.Marshal(map[string]any{"response": false, "message": "internal error"})
+		w.Write(resp)
 	} else {
 		w.WriteHeader(http.StatusOK)
+		resp, _ := json.Marshal(map[string]any{"response": true, "message": "item removed successfully"})
+		w.Write(resp)
 	}
 }
 
@@ -230,6 +256,8 @@ func CheckItems(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		log.Error.Printf("error fetching cart for user %s", cookie)
+		resp, _ := json.Marshal(map[string]any{"response": false, "message": "internal error"})
+		w.Write(resp)
 	} else {
 		w.WriteHeader(http.StatusOK)
 		response, _ := json.Marshal(cartItems)
@@ -249,7 +277,7 @@ func Checkout(w http.ResponseWriter, r *http.Request) {
 	items, _ := pkg.GetCart(cookie)
 	if len(items) == 0 {
 		w.WriteHeader(http.StatusNotFound)
-		resp, _ := json.Marshal(map[string]string{"message": "cart is empty"})
+		resp, _ := json.Marshal(map[string]any{"response": false, "message": "cart is empty"})
 		w.Write(resp)
 		return
 	}
@@ -258,8 +286,12 @@ func Checkout(w http.ResponseWriter, r *http.Request) {
 	err = pkg.WriteCart(cookie, items, time.Now())
 	if err != nil {
 		w.WriteHeader(http.StatusNotFound)
+		resp, _ := json.Marshal(map[string]any{"response": false, "message": "error writing cart"})
+		w.Write(resp)
 		return
 	}
+	resp, _ := json.Marshal(map[string]any{"response": true, "message": "checkout successful"})
+	w.Write(resp)
 }
 
 func GenerateCookie(w http.ResponseWriter, r *http.Request) {

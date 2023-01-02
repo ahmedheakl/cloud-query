@@ -2,15 +2,15 @@ FROM golang:1.19-alpine
 
 WORKDIR /app
 ADD . ./
-# COPY go.mod ./
-# COPY go.sum ./
 RUN go mod download
-# COPY api.go ./
-# COPY cmd/ ./cmd/
-# COPY pkg ./pkg/
 RUN go build -o /main
 
-# Remember to expose port with -p flag
 EXPOSE 8080
-
-CMD ["/main"]
+# ENV host=terraform-20221229205211947800000001.clgu6fwjxdcc.me-south-1.rds.amazonaws.com
+# ENV redis=redis:6379
+# ENV database=testdb
+# ENV username=postgres
+# ENV password=postgres
+# ENV frontendOrigin=http://localhost:3000
+# 
+# CMD ["/main"]

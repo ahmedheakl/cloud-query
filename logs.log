@@ -1,0 +1,636 @@
+[INFO]:		2022/12/31 22:14:17 api.go:28: starting server ...
+[INFO]:		2022/12/31 22:14:17 db.go:102: successfully connected to redis!
+[INFO]:		2022/12/31 22:14:17 db.go:121: successfully connected to redis!
+[INFO]:		2022/12/31 22:14:17 db.go:73: connecting to database ...
+[FATAL]:	2022/12/31 22:14:17 db.go:81: can't connect to database, error: missing "=" after "\x1b[33m│\x1b[0m" in connection info string"
+[INFO]:		2022/12/31 22:15:26 api.go:28: starting server ...
+[INFO]:		2022/12/31 22:15:26 db.go:102: successfully connected to redis!
+[INFO]:		2022/12/31 22:15:26 db.go:121: successfully connected to redis!
+[INFO]:		2022/12/31 22:15:26 db.go:73: connecting to database ...
+[FATAL]:	2022/12/31 22:15:26 db.go:81: can't connect to database, error: missing "=" after "\x1b[33m│\x1b[0m" in connection info string"
+[INFO]:		2022/12/31 22:16:14 api.go:28: starting server ...
+[INFO]:		2022/12/31 22:16:14 db.go:102: successfully connected to redis!
+[INFO]:		2022/12/31 22:16:14 db.go:121: successfully connected to redis!
+[INFO]:		2022/12/31 22:16:14 db.go:73: connecting to database ...
+[FATAL]:	2022/12/31 22:16:14 db.go:81: can't connect to database, error: missing "=" after "\x1b[33m│\x1b[0m" in connection info string"
+[INFO]:		2022/12/31 22:16:50 api.go:28: starting server ...
+[INFO]:		2022/12/31 22:16:50 db.go:102: successfully connected to redis!
+[INFO]:		2022/12/31 22:16:50 db.go:121: successfully connected to redis!
+[INFO]:		2022/12/31 22:16:50 db.go:73: connecting to database ...
+[FATAL]:	2022/12/31 22:16:50 db.go:81: can't connect to database, error: missing "=" after "\x1b[33m│\x1b[0m" in connection info string"
+[INFO]:		2022/12/31 22:17:10 api.go:28: starting server ...
+[INFO]:		2022/12/31 22:17:10 db.go:102: successfully connected to redis!
+[INFO]:		2022/12/31 22:17:10 db.go:121: successfully connected to redis!
+[INFO]:		2022/12/31 22:17:10 db.go:73: connecting to database ...
+[FATAL]:	2022/12/31 22:17:10 db.go:81: can't connect to database, error: missing "=" after "\x1b[33m│\x1b[0m" in connection info string"
+[INFO]:		2022/12/31 22:28:40 api.go:28: starting server ...
+[INFO]:		2022/12/31 22:28:40 db.go:102: successfully connected to redis!
+[INFO]:		2022/12/31 22:28:40 db.go:121: successfully connected to redis!
+[INFO]:		2022/12/31 22:28:40 db.go:73: connecting to database ...
+[FATAL]:	2022/12/31 22:28:40 db.go:81: can't connect to database, error: missing "=" after "\x1b[33m│\x1b[0m" in connection info string"
+[INFO]:		2023/01/01 22:01:57 api.go:28: starting server ...
+[INFO]:		2023/01/01 22:01:57 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/01 22:01:57 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/01 22:01:57 db.go:73: connecting to database ...
+[INFO]:		2023/01/01 22:01:58 db.go:84: successfully connected to database!
+[INFO]:		2023/01/01 22:01:58 api.go:48: started server on port :8080
+[INFO]:		2023/01/02 03:02:26 api.go:28: starting server ...
+[INFO]:		2023/01/02 03:02:26 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/02 03:02:26 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/02 03:02:26 db.go:73: connecting to database ...
+[INFO]:		2023/01/02 03:02:29 db.go:84: successfully connected to database!
+[INFO]:		2023/01/02 03:02:29 api.go:48: started server on port :8080
+[INFO]:		2023/01/02 03:06:59 api.go:28: starting server ...
+[INFO]:		2023/01/02 03:06:59 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/02 03:06:59 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/02 03:06:59 db.go:73: connecting to database ...
+[INFO]:		2023/01/02 03:07:01 db.go:84: successfully connected to database!
+[INFO]:		2023/01/02 03:07:01 api.go:48: started server on port :8080
+[INFO]:		2023/01/02 03:13:07 api.go:28: starting server ...
+[INFO]:		2023/01/02 03:13:07 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/02 03:13:07 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/02 03:13:07 db.go:73: connecting to database ...
+[INFO]:		2023/01/02 03:13:09 db.go:84: successfully connected to database!
+[INFO]:		2023/01/02 03:13:09 api.go:48: started server on port :8080
+[INFO]:		2023/01/02 17:25:44 api.go:28: starting server ...
+[INFO]:		2023/01/02 17:25:44 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/02 17:25:44 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/02 17:25:44 db.go:73: connecting to database ...
+[INFO]:		2023/01/02 17:25:59 db.go:84: successfully connected to database!
+[INFO]:		2023/01/02 17:25:59 api.go:48: started server on port :8080
+[INFO]:		2023/01/02 17:28:17 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:18 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:18 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:18 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:18 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:19 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:19 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:19 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:19 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:20 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:20 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:20 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:20 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:21 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:21 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:21 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:21 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:34 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:34 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:35 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:35 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:35 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:36 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:36 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:36 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:37 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:37 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:37 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:38 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:38 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:38 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:39 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:28:39 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 17:29:02 endpoints.go:33: Executing query select * from items
+[ERROR]:	2023/01/02 17:29:15 endpoints.go:39: can't execute query:select * from items error:read tcp 172.16.0.2:55294->157.241.30.36:5432: read: connection reset by peer
+[INFO]:		2023/01/02 17:31:09 endpoints.go:33: Executing query select * from items
+[ERROR]:	2023/01/02 17:31:10 endpoints.go:39: can't execute query:select * from items error:read tcp 172.16.0.2:47918->157.241.30.36:5432: read: connection timed out
+[ERROR]:	2023/01/02 17:31:15 endpoints.go:39: can't execute query:select * from items error:dial tcp 157.241.30.36:5432: connect: network is unreachable
+[ERROR]:	2023/01/02 17:31:15 endpoints.go:39: can't execute query:select * from items error:dial tcp 157.241.30.36:5432: connect: network is unreachable
+[INFO]:		2023/01/02 17:31:18 endpoints.go:33: Executing query select * from items
+[ERROR]:	2023/01/02 17:31:34 endpoints.go:39: can't execute query:select * from items error:read tcp 172.16.0.2:47916->157.241.30.36:5432: read: connection timed out
+[INFO]:		2023/01/02 17:32:40 api.go:28: starting server ...
+[INFO]:		2023/01/02 17:32:40 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/02 17:32:40 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/02 17:32:40 db.go:73: connecting to database ...
+[FATAL]:	2023/01/02 17:32:40 db.go:81: can't connect to database, error: dial tcp: lookup port=5432: no such host
+[INFO]:		2023/01/02 17:32:56 api.go:28: starting server ...
+[INFO]:		2023/01/02 17:32:56 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/02 17:32:56 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/02 17:32:56 db.go:73: connecting to database ...
+[FATAL]:	2023/01/02 17:32:56 db.go:81: can't connect to database, error: missing "=" after "\x1b[33m│\x1b[0m" in connection info string"
+[INFO]:		2023/01/02 17:33:11 api.go:28: starting server ...
+[INFO]:		2023/01/02 17:33:11 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/02 17:33:11 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/02 17:33:11 db.go:73: connecting to database ...
+[INFO]:		2023/01/02 17:33:13 db.go:84: successfully connected to database!
+[INFO]:		2023/01/02 17:33:13 api.go:48: started server on port :8080
+[INFO]:		2023/01/02 17:33:17 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:16:53 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:20:09 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:20:24 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:21:47 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 22:22:09 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:22:10 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 22:22:16 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:22:17 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 22:22:38 internal.go:116: sign up failed. Email 'ahmedheakl22@gmail.com' already exists
+[INFO]:		2023/01/02 22:22:59 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 22:22:59 endpoints.go:86: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/02 22:23:00 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:23:16 endpoints.go:57: logging in for user 'xxnxx@gmail.com' ...
+[INFO]:		2023/01/02 22:23:18 endpoints.go:78: login for user 'xxnxx@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/02 22:23:45 internal.go:116: sign up failed. Email 'ahmedheakl22@gmail.com' already exists
+[INFO]:		2023/01/02 22:25:03 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 22:25:03 endpoints.go:86: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/02 22:25:03 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:25:13 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 22:25:51 api.go:15: Not found /favicon.ico
+[INFO]:		2023/01/02 22:27:02 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:28:18 api.go:28: starting server ...
+[INFO]:		2023/01/02 22:28:18 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/02 22:28:18 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/02 22:28:18 db.go:73: connecting to database ...
+[INFO]:		2023/01/02 22:28:20 db.go:84: successfully connected to database!
+[INFO]:		2023/01/02 22:28:20 api.go:48: started server on port :8080
+[INFO]:		2023/01/02 22:28:27 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:28:29 endpoints.go:33: Executing query select * from items where id=3
+[INFO]:		2023/01/02 22:28:36 endpoints.go:57: logging in for user 'mohamedabden21@gmail.com' ...
+[INFO]:		2023/01/02 22:28:37 endpoints.go:78: login for user 'mohamedabden21@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/02 22:29:04 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 22:29:04 endpoints.go:86: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/02 22:29:04 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:29:07 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 22:31:36 api.go:28: starting server ...
+[INFO]:		2023/01/02 22:31:36 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/02 22:31:36 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/02 22:31:36 db.go:73: connecting to database ...
+[INFO]:		2023/01/02 22:31:49 api.go:28: starting server ...
+[INFO]:		2023/01/02 22:31:49 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/02 22:31:49 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/02 22:31:49 db.go:73: connecting to database ...
+[INFO]:		2023/01/02 22:31:50 db.go:84: successfully connected to database!
+[INFO]:		2023/01/02 22:31:50 api.go:48: started server on port :8080
+[INFO]:		2023/01/02 22:31:55 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:31:59 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 22:32:01 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 22:32:18 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 22:32:19 endpoints.go:86: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/02 22:32:19 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:32:21 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 22:40:50 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 22:40:50 endpoints.go:86: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/02 22:40:50 endpoints.go:33: Executing query select * from items
+[ERROR]:	2023/01/02 22:43:26 endpoints.go:155: can't decode body of request, error: json: cannot unmarshal string into Go struct field Purchase.item of type int
+[ERROR]:	2023/01/02 22:44:12 endpoints.go:155: can't decode body of request, error: json: cannot unmarshal string into Go struct field Purchase.item of type int
+[INFO]:		2023/01/02 22:45:19 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 22:45:19 endpoints.go:86: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/02 22:46:35 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:46:57 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:49:00 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 22:51:14 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:53:58 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:54:24 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:54:30 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 22:54:41 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:54:43 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 22:54:52 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:54:54 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 22:55:00 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:55:02 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 22:55:22 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:55:24 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 22:55:51 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 22:55:53 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 23:01:00 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:01:36 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:01:37 endpoints.go:78: login for user 'ahmedheakl22@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/02 23:01:44 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:01:44 endpoints.go:86: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/02 23:01:44 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:01:47 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:02:31 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:02:32 endpoints.go:78: login for user 'ahmedheakl22@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/02 23:04:03 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:04:03 endpoints.go:86: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/02 23:04:03 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:05:53 api.go:15: Not found /favicon.ico
+[INFO]:		2023/01/02 23:06:27 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 23:06:51 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:06:53 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 23:07:34 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:07:44 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:07:44 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:07:47 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 23:09:47 endpoints.go:33: Executing query select * from purchases
+[INFO]:		2023/01/02 23:10:54 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:10:58 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:10:59 endpoints.go:90: login successful for user 'ahmedheakl22@gmail.com', reused cookie '002415c1-347a-40d3-8b00-ea01e7f74748'
+[INFO]:		2023/01/02 23:10:59 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:11:05 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:11:06 endpoints.go:78: login for user 'ahmedheakl22@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/02 23:12:18 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:12:18 endpoints.go:90: login successful for user 'ahmedheakl22@gmail.com', reused cookie '002415c1-347a-40d3-8b00-ea01e7f74748'
+[INFO]:		2023/01/02 23:36:36 api.go:28: starting server ...
+[INFO]:		2023/01/02 23:36:36 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/02 23:36:36 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/02 23:36:36 db.go:73: connecting to database ...
+[INFO]:		2023/01/02 23:36:37 db.go:84: successfully connected to database!
+[INFO]:		2023/01/02 23:36:37 api.go:48: started server on port :8080
+[INFO]:		2023/01/02 23:36:39 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:40:27 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:40:28 endpoints.go:78: login for user 'ahmedheakl22@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/02 23:40:51 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:40:51 endpoints.go:90: login successful for user 'ahmedheakl22@gmail.com', reused cookie '002415c1-347a-40d3-8b00-ea01e7f74748'
+[INFO]:		2023/01/02 23:40:53 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:40:53 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:40:53 endpoints.go:90: login successful for user 'ahmedheakl22@gmail.com', reused cookie '002415c1-347a-40d3-8b00-ea01e7f74748'
+[INFO]:		2023/01/02 23:40:53 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:40:54 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:40:54 endpoints.go:90: login successful for user 'ahmedheakl22@gmail.com', reused cookie '002415c1-347a-40d3-8b00-ea01e7f74748'
+[INFO]:		2023/01/02 23:40:54 endpoints.go:90: login successful for user 'ahmedheakl22@gmail.com', reused cookie '002415c1-347a-40d3-8b00-ea01e7f74748'
+[INFO]:		2023/01/02 23:40:55 endpoints.go:90: login successful for user 'ahmedheakl22@gmail.com', reused cookie '002415c1-347a-40d3-8b00-ea01e7f74748'
+[INFO]:		2023/01/02 23:40:56 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:40:56 endpoints.go:90: login successful for user 'ahmedheakl22@gmail.com', reused cookie '002415c1-347a-40d3-8b00-ea01e7f74748'
+[INFO]:		2023/01/02 23:41:12 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:41:12 endpoints.go:86: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/02 23:41:43 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:41:43 endpoints.go:90: login successful for user 'ahmedheakl22@gmail.com', reused cookie '002415c1-347a-40d3-8b00-ea01e7f74748'
+[INFO]:		2023/01/02 23:41:55 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:41:56 endpoints.go:90: login successful for user 'ahmedheakl22@gmail.com', reused cookie '002415c1-347a-40d3-8b00-ea01e7f74748'
+[INFO]:		2023/01/02 23:42:14 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:42:14 endpoints.go:90: login successful for user 'ahmedheakl22@gmail.com', reused cookie '002415c1-347a-40d3-8b00-ea01e7f74748'
+[INFO]:		2023/01/02 23:42:41 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:42:42 endpoints.go:78: login for user 'ahmedheakl22@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/02 23:42:59 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:43:00 endpoints.go:78: login for user 'ahmedheakl22@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/02 23:43:43 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:43:44 endpoints.go:78: login for user 'ahmedheakl22@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/02 23:43:58 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:43:59 endpoints.go:78: login for user 'ahmedheakl22@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/02 23:44:58 api.go:28: starting server ...
+[INFO]:		2023/01/02 23:44:58 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/02 23:44:58 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/02 23:44:58 db.go:73: connecting to database ...
+[INFO]:		2023/01/02 23:45:00 db.go:84: successfully connected to database!
+[INFO]:		2023/01/02 23:45:00 api.go:48: started server on port :8080
+[INFO]:		2023/01/02 23:45:14 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:45:14 endpoints.go:78: login for user 'ahmedheakl22@gmail.com' failed, Incorrect password
+[INFO]:		2023/01/02 23:46:24 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:46:27 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 23:47:03 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:47:06 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 23:47:19 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:47:21 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 23:47:36 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:47:46 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:47:47 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 23:47:54 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:47:55 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 23:47:59 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:48:01 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 23:48:05 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:48:06 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 23:49:03 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:49:05 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 23:49:11 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 23:49:24 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:49:30 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 23:49:46 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 23:53:10 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:53:22 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/02 23:53:23 endpoints.go:78: login for user 'ahmedheakl22@gmail.com' failed, Incorrect password
+[INFO]:		2023/01/02 23:55:23 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:55:26 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 23:55:41 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:55:44 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:55:56 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:56:20 api.go:28: starting server ...
+[INFO]:		2023/01/02 23:56:20 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/02 23:56:20 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/02 23:56:20 db.go:73: connecting to database ...
+[INFO]:		2023/01/02 23:56:22 db.go:84: successfully connected to database!
+[INFO]:		2023/01/02 23:56:22 api.go:48: started server on port :8080
+[INFO]:		2023/01/02 23:58:30 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:58:31 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:58:33 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 23:58:57 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:59:10 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:59:11 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:59:12 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/02 23:59:31 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/02 23:59:36 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/03 00:00:16 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/03 00:00:18 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/03 00:00:26 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/03 00:00:47 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/03 00:01:06 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/03 00:01:31 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/03 00:01:34 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/03 00:01:35 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/03 00:03:32 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/03 00:03:35 endpoints.go:33: Executing query select * from items where id=2
+[INFO]:		2023/01/03 00:04:15 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/03 00:05:09 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/03 00:05:39 endpoints.go:33: Executing query select * from items
+[INFO]:		2023/01/03 00:06:31 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:06:32 endpoints.go:78: login for user 'ahmedheakl22@gmail.com' failed, Incorrect password
+[INFO]:		2023/01/03 00:06:41 endpoints.go:57: logging in for user 'xvvv@gmail.com' ...
+[INFO]:		2023/01/03 00:06:42 endpoints.go:78: login for user 'xvvv@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/03 00:09:07 endpoints.go:57: logging in for user 'xxnxx@gmail.com' ...
+[INFO]:		2023/01/03 00:09:07 endpoints.go:78: login for user 'xxnxx@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/03 00:09:30 endpoints.go:57: logging in for user 'xxnxx@gmail.com' ...
+[INFO]:		2023/01/03 00:09:30 endpoints.go:78: login for user 'xxnxx@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/03 00:10:24 endpoints.go:57: logging in for user 'xxnxx@gmail.com' ...
+[INFO]:		2023/01/03 00:10:24 endpoints.go:78: login for user 'xxnxx@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/03 00:10:45 endpoints.go:57: logging in for user 'xxnxx@gmail.com' ...
+[INFO]:		2023/01/03 00:10:45 endpoints.go:78: login for user 'xxnxx@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/03 00:11:29 endpoints.go:57: logging in for user 'xxnxx@gmail.com' ...
+[INFO]:		2023/01/03 00:11:30 endpoints.go:78: login for user 'xxnxx@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/03 00:12:02 endpoints.go:57: logging in for user 'xxnxx@gmail.com' ...
+[INFO]:		2023/01/03 00:12:02 endpoints.go:78: login for user 'xxnxx@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/03 00:12:20 endpoints.go:57: logging in for user 'xxnxx@gmail.com' ...
+[INFO]:		2023/01/03 00:12:20 endpoints.go:78: login for user 'xxnxx@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/03 00:12:48 endpoints.go:57: logging in for user 'xxnxx@gmail.com' ...
+[INFO]:		2023/01/03 00:12:49 endpoints.go:78: login for user 'xxnxx@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/03 00:14:37 endpoints.go:57: logging in for user 'xxnxx@gmail.com' ...
+[INFO]:		2023/01/03 00:14:38 endpoints.go:78: login for user 'xxnxx@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/03 00:14:51 endpoints.go:57: logging in for user 'xxnxx@gmail.com' ...
+[INFO]:		2023/01/03 00:14:51 endpoints.go:78: login for user 'xxnxx@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/03 00:15:33 endpoints.go:57: logging in for user 'xxnxx@gmail.com' ...
+[INFO]:		2023/01/03 00:15:34 endpoints.go:78: login for user 'xxnxx@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/03 00:16:13 endpoints.go:57: logging in for user 'xxnxx@gmail.com' ...
+[INFO]:		2023/01/03 00:16:13 endpoints.go:78: login for user 'xxnxx@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/03 00:16:27 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:16:28 endpoints.go:78: login for user 'ahmedheakl22@gmail.com' failed, Incorrect password
+[INFO]:		2023/01/03 00:21:14 api.go:27: starting server ...
+[INFO]:		2023/01/03 00:21:14 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/03 00:21:14 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/03 00:21:14 db.go:73: connecting to database ...
+[INFO]:		2023/01/03 00:21:15 db.go:84: successfully connected to database!
+[INFO]:		2023/01/03 00:21:15 api.go:46: started server on port :8080
+[INFO]:		2023/01/03 00:21:21 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:21:21 endpoints.go:86: login successful for user 'ahmedheakl22@gmail.com', generated cookie 'dcd7bdfb-46b8-4cf4-9bc4-dc5cccdd9203'
+[INFO]:		2023/01/03 00:21:27 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:21:27 endpoints.go:86: login successful for user 'ahmedheakl22@gmail.com', generated cookie '173bd76e-c917-4a3b-b619-433111106eaf'
+[INFO]:		2023/01/03 00:21:33 endpoints.go:57: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:21:34 endpoints.go:86: login successful for user 'ahmedheakl22@gmail.com', generated cookie 'f575d93b-7b39-40fc-81b9-1f0bcdbccd97'
+[INFO]:		2023/01/03 00:31:48 api.go:28: starting server ...
+[INFO]:		2023/01/03 00:31:48 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/03 00:31:48 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/03 00:31:48 db.go:73: connecting to database ...
+[FATAL]:	2023/01/03 00:31:48 db.go:81: can't connect to database, error: dial tcp: lookup port=5432: no such host
+[INFO]:		2023/01/03 00:32:02 api.go:28: starting server ...
+[INFO]:		2023/01/03 00:32:02 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/03 00:32:02 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/03 00:32:02 db.go:73: connecting to database ...
+[INFO]:		2023/01/03 00:32:04 db.go:84: successfully connected to database!
+[INFO]:		2023/01/03 00:32:04 api.go:48: started server on port :8080
+[INFO]:		2023/01/03 00:32:19 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:32:20 internal.go:75: 1
+[INFO]:		2023/01/03 00:32:20 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 00:32:48 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:32:48 internal.go:75: 1
+[INFO]:		2023/01/03 00:32:48 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 00:33:23 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:33:23 internal.go:75: 1
+[INFO]:		2023/01/03 00:33:23 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 00:33:23 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:33:43 api.go:15: Not found /favicon.ico
+[INFO]:		2023/01/03 00:33:58 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:34:28 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:34:29 internal.go:75: 1
+[INFO]:		2023/01/03 00:34:29 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 00:34:29 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:34:57 api.go:15: Not found /cookie/ahmedheakl22@gmail.com
+[INFO]:		2023/01/03 00:35:26 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:35:47 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:35:47 internal.go:75: 1
+[INFO]:		2023/01/03 00:35:47 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 00:35:47 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:36:39 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:36:48 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:36:53 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:36:53 internal.go:75: 1
+[INFO]:		2023/01/03 00:36:53 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 00:36:54 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:37:28 endpoints.go:35: Executing query select * from items where id=2
+[INFO]:		2023/01/03 00:37:33 endpoints.go:35: Executing query select * from items where id=3
+[INFO]:		2023/01/03 00:38:20 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:38:36 endpoints.go:35: Executing query select * from items where id=2
+[INFO]:		2023/01/03 00:40:36 api.go:28: starting server ...
+[INFO]:		2023/01/03 00:40:36 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/03 00:40:36 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/03 00:40:36 db.go:73: connecting to database ...
+[INFO]:		2023/01/03 00:40:39 db.go:84: successfully connected to database!
+[INFO]:		2023/01/03 00:40:39 api.go:48: started server on port :8080
+[INFO]:		2023/01/03 00:40:50 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:40:50 internal.go:75: 0
+[INFO]:		2023/01/03 00:40:50 endpoints.go:86: login for user 'ahmedheakl22@gmail.com' failed, Incorrect password
+[INFO]:		2023/01/03 00:40:55 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:40:55 internal.go:75: 1
+[INFO]:		2023/01/03 00:40:55 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 00:40:55 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:41:09 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:41:10 endpoints.go:35: Executing query select * from items where id=2
+[INFO]:		2023/01/03 00:41:14 endpoints.go:35: Executing query select * from items where id=2
+[INFO]:		2023/01/03 00:41:43 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:41:45 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:41:48 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:41:50 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:41:51 endpoints.go:35: Executing query select * from items where id=2
+[INFO]:		2023/01/03 00:42:01 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:47:50 api.go:28: starting server ...
+[INFO]:		2023/01/03 00:47:50 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/03 00:47:50 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/03 00:47:50 db.go:73: connecting to database ...
+[INFO]:		2023/01/03 00:47:52 db.go:84: successfully connected to database!
+[INFO]:		2023/01/03 00:47:52 api.go:48: started server on port :8080
+[INFO]:		2023/01/03 00:48:23 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:48:50 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:48:51 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:49:00 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:49:24 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:49:24 internal.go:75: 1
+[INFO]:		2023/01/03 00:49:24 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 00:49:25 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:50:19 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:50:19 internal.go:75: 1
+[INFO]:		2023/01/03 00:50:19 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 00:50:19 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:51:36 api.go:28: starting server ...
+[INFO]:		2023/01/03 00:51:36 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/03 00:51:36 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/03 00:51:36 db.go:73: connecting to database ...
+[INFO]:		2023/01/03 00:51:37 db.go:84: successfully connected to database!
+[INFO]:		2023/01/03 00:51:37 api.go:48: started server on port :8080
+[INFO]:		2023/01/03 00:51:47 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:51:54 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:51:54 internal.go:75: 1
+[INFO]:		2023/01/03 00:51:54 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 00:51:55 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:52:13 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:52:13 internal.go:75: 1
+[INFO]:		2023/01/03 00:52:13 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 00:52:13 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:52:34 api.go:28: starting server ...
+[INFO]:		2023/01/03 00:52:34 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/03 00:52:34 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/03 00:52:34 db.go:73: connecting to database ...
+[INFO]:		2023/01/03 00:52:35 db.go:84: successfully connected to database!
+[INFO]:		2023/01/03 00:52:35 api.go:48: started server on port :8080
+[INFO]:		2023/01/03 00:53:10 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:53:10 internal.go:75: 1
+[INFO]:		2023/01/03 00:53:10 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 00:53:11 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:54:40 api.go:28: starting server ...
+[INFO]:		2023/01/03 00:54:40 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/03 00:54:40 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/03 00:54:40 db.go:73: connecting to database ...
+[INFO]:		2023/01/03 00:54:41 db.go:84: successfully connected to database!
+[INFO]:		2023/01/03 00:54:41 api.go:48: started server on port :8080
+[INFO]:		2023/01/03 00:54:55 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:55:01 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:55:02 internal.go:75: 1
+[INFO]:		2023/01/03 00:55:02 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 00:55:02 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:55:27 api.go:28: starting server ...
+[INFO]:		2023/01/03 00:55:27 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/03 00:55:27 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/03 00:55:27 db.go:73: connecting to database ...
+[INFO]:		2023/01/03 00:55:29 db.go:84: successfully connected to database!
+[INFO]:		2023/01/03 00:55:29 api.go:48: started server on port :8080
+[INFO]:		2023/01/03 00:55:51 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:55:58 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:55:58 internal.go:75: 1
+[INFO]:		2023/01/03 00:55:58 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 00:55:59 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:56:51 api.go:28: starting server ...
+[INFO]:		2023/01/03 00:56:51 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/03 00:56:51 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/03 00:56:51 db.go:73: connecting to database ...
+[INFO]:		2023/01/03 00:56:53 db.go:84: successfully connected to database!
+[INFO]:		2023/01/03 00:56:53 api.go:48: started server on port :8080
+[INFO]:		2023/01/03 00:57:01 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:57:01 internal.go:75: 1
+[INFO]:		2023/01/03 00:57:01 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 00:57:01 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:57:43 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:57:48 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:57:48 internal.go:75: 1
+[INFO]:		2023/01/03 00:57:48 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 00:57:49 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:58:58 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:59:02 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:59:09 internal.go:75: 1
+[INFO]:		2023/01/03 00:59:09 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 00:59:09 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:59:11 internal.go:75: 1
+[INFO]:		2023/01/03 00:59:11 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 00:59:22 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:59:27 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 00:59:27 internal.go:75: 1
+[INFO]:		2023/01/03 00:59:27 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 00:59:28 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 00:59:54 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 01:00:00 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:00:01 internal.go:75: 1
+[INFO]:		2023/01/03 01:00:01 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 01:00:01 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 01:01:58 api.go:28: starting server ...
+[INFO]:		2023/01/03 01:01:58 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/03 01:01:58 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/03 01:01:58 db.go:73: connecting to database ...
+[INFO]:		2023/01/03 01:02:00 db.go:84: successfully connected to database!
+[INFO]:		2023/01/03 01:02:00 api.go:48: started server on port :8080
+[INFO]:		2023/01/03 01:03:45 api.go:15: Not found /cookie/ahmedheakl22@gmail.com
+[INFO]:		2023/01/03 01:04:36 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 01:04:41 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 01:04:45 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:04:46 internal.go:75: 1
+[INFO]:		2023/01/03 01:04:46 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 01:04:46 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 01:05:12 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 01:05:18 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 01:05:28 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 01:05:40 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:05:40 internal.go:75: 1
+[INFO]:		2023/01/03 01:05:40 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 01:05:40 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 01:05:57 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:05:58 internal.go:75: 1
+[INFO]:		2023/01/03 01:05:58 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 01:05:58 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 01:06:06 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 01:06:12 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:06:12 internal.go:75: 1
+[INFO]:		2023/01/03 01:06:12 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 01:06:43 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:06:43 internal.go:75: 1
+[INFO]:		2023/01/03 01:06:43 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 01:07:05 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:07:05 internal.go:75: 1
+[INFO]:		2023/01/03 01:07:05 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 01:09:24 api.go:15: Not found /cookie/ahmedheakl22@gmail.com
+[INFO]:		2023/01/03 01:13:50 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:13:50 internal.go:75: 0
+[INFO]:		2023/01/03 01:13:50 endpoints.go:86: login for user 'ahmedheakl22@gmail.com' failed, Incorrect password
+[INFO]:		2023/01/03 01:14:57 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:14:58 internal.go:75: 0
+[INFO]:		2023/01/03 01:14:58 endpoints.go:86: login for user 'ahmedheakl22@gmail.com' failed, Incorrect password
+[INFO]:		2023/01/03 01:15:56 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:15:56 internal.go:75: 0
+[INFO]:		2023/01/03 01:15:57 endpoints.go:86: login for user 'ahmedheakl22@gmail.com' failed, Incorrect password
+[INFO]:		2023/01/03 01:16:30 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:16:30 internal.go:75: 0
+[INFO]:		2023/01/03 01:16:31 endpoints.go:86: login for user 'ahmedheakl22@gmail.com' failed, Incorrect password
+[INFO]:		2023/01/03 01:16:54 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:16:54 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:16:54 internal.go:75: 0
+[INFO]:		2023/01/03 01:16:54 endpoints.go:86: login for user 'ahmedheakl22@gmail.com' failed, Incorrect password
+[INFO]:		2023/01/03 01:16:55 internal.go:75: 0
+[INFO]:		2023/01/03 01:16:55 endpoints.go:86: login for user 'ahmedheakl22@gmail.com' failed, Incorrect password
+[INFO]:		2023/01/03 01:17:11 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:17:11 internal.go:75: 0
+[INFO]:		2023/01/03 01:17:12 endpoints.go:86: login for user 'ahmedheakl22@gmail.com' failed, Incorrect password
+[INFO]:		2023/01/03 01:17:17 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:17:17 internal.go:75: 0
+[INFO]:		2023/01/03 01:17:17 endpoints.go:86: login for user 'ahmedheakl22@gmail.com' failed, Incorrect password
+[INFO]:		2023/01/03 01:18:06 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:18:07 internal.go:75: 0
+[INFO]:		2023/01/03 01:18:07 endpoints.go:86: login for user 'ahmedheakl22@gmail.com' failed, Incorrect password
+[INFO]:		2023/01/03 01:18:33 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:18:33 internal.go:75: 0
+[INFO]:		2023/01/03 01:18:33 endpoints.go:86: login for user 'ahmedheakl22@gmail.com' failed, Incorrect password
+[INFO]:		2023/01/03 01:18:56 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:18:56 internal.go:75: 0
+[INFO]:		2023/01/03 01:18:57 endpoints.go:86: login for user 'ahmedheakl22@gmail.com' failed, Incorrect password
+[INFO]:		2023/01/03 01:19:16 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:19:16 internal.go:75: 0
+[INFO]:		2023/01/03 01:19:16 endpoints.go:86: login for user 'ahmedheakl22@gmail.com' failed, Incorrect password
+[INFO]:		2023/01/03 01:19:31 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:19:31 internal.go:75: 0
+[INFO]:		2023/01/03 01:19:32 endpoints.go:86: login for user 'ahmedheakl22@gmail.com' failed, Incorrect password
+[INFO]:		2023/01/03 01:19:38 internal.go:117: sign up failed. Email 'ahmedheakl22@gmail.com' already exists
+[INFO]:		2023/01/03 01:19:44 internal.go:117: sign up failed. Email 'ahmedheakl22@gmail.com' already exists
+[INFO]:		2023/01/03 01:21:43 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 01:21:54 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:21:54 internal.go:75: 1
+[INFO]:		2023/01/03 01:21:54 endpoints.go:93: login successful for user 'ahmedheakl22@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 01:21:54 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 01:22:05 endpoints.go:35: Executing query select * from items where id=2
+[INFO]:		2023/01/03 01:22:27 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 01:24:09 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 01:24:17 endpoints.go:35: Executing query select * from items where id=2
+[INFO]:		2023/01/03 01:24:34 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 01:24:35 endpoints.go:35: Executing query select * from items where id=2
+[INFO]:		2023/01/03 01:24:36 endpoints.go:35: Executing query select * from items where id=3
+[INFO]:		2023/01/03 01:25:11 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 01:25:28 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 01:25:31 endpoints.go:35: Executing query select * from items where id=2
+[INFO]:		2023/01/03 01:25:31 endpoints.go:35: Executing query select * from items where id=3
+[INFO]:		2023/01/03 01:25:32 endpoints.go:35: Executing query select * from items where id=4
+[INFO]:		2023/01/03 01:25:55 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 01:25:59 endpoints.go:35: Executing query select * from items where id=2
+[INFO]:		2023/01/03 01:26:00 endpoints.go:35: Executing query select * from items where id=3
+[INFO]:		2023/01/03 01:26:24 endpoints.go:35: Executing query select * from items
+[INFO]:		2023/01/03 01:31:13 endpoints.go:63: logging in for user 'xxnxx@gmail.com' ...
+[INFO]:		2023/01/03 01:31:13 internal.go:75: 0
+[INFO]:		2023/01/03 01:31:14 endpoints.go:86: login for user 'xxnxx@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/03 01:31:40 endpoints.go:63: logging in for user 'ahmedheakl22@gmail.com' ...
+[INFO]:		2023/01/03 01:31:40 internal.go:75: 0
+[INFO]:		2023/01/03 01:31:40 endpoints.go:86: login for user 'ahmedheakl22@gmail.com' failed, Incorrect password
+[INFO]:		2023/01/03 01:32:00 endpoints.go:63: logging in for user 'xxnxx@gmail.com' ...
+[INFO]:		2023/01/03 01:32:01 internal.go:75: 0
+[INFO]:		2023/01/03 01:32:01 endpoints.go:86: login for user 'xxnxx@gmail.com' failed, Email is not registered
+[INFO]:		2023/01/03 01:35:17 endpoints.go:35: Executing query select * from items

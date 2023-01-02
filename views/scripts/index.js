@@ -1,5 +1,5 @@
 const BASEURL = "http://127.0.0.1:5500/"
-const API = "https://faae-41-43-245-201.eu.ngrok.io"
+const API = "http://localhost:8080"
 
 const navAuth = document.getElementById("nav-auth");
 let element; 
@@ -12,8 +12,9 @@ if(localStorage.getItem("cookie") !== ''){
         </a>
     `
     const logoutButton = document.getElementById("logout-button")
-    logoutButton.addEventListener("click", (e) => {
+    logoutButton.addEventListener("click", async function(e){
         localStorage.setItem("cookie", "");
+        await fetch(`${API}/logout/`, {method: "GET", redirect: "follow"});
         location.replace(BASEURL+"templates/auth.html");
     }) 
     
@@ -122,7 +123,7 @@ function createItemElements(data){
 /**
  * Add item with itemid input to the purchases table
  * @param {number} itemid id of the cart item to be added
- * @returns {any}
+ * @returns {boolean} status flag for valid/invalid addition
  */
 async function addItemToCart(itemid){
     let raw = `{"item": ${itemid}, "quantity": 1}`
@@ -133,12 +134,13 @@ async function addItemToCart(itemid){
         redirect: 'follow'
     };
     
-    try{
-        let rawResponse = fetch(`${API}/add/`, requestOptions);
-        // let res = await rawResponse.text();
-    }catch(error){
-        console.log(error);
-    } 
+    let rawResponse = await fetch(`${API}/add/`, requestOptions);
+    let res = await rawResponse.json();
+    if(res.response == false){
+        alert(res.message)
+        return false;
+    }
+    return true;
 }
 
 /**
@@ -188,12 +190,30 @@ function updateCart(cartItems){
                 <td>${totalPrice}$</td>
             </tr>
         </table>
-        <button class="checkout">Checkout</button>
+        <button class="checkout" id="checkout-button">Checkout</button>
         `
     }
     const cart = document.getElementById("cart");
     cart.innerHTML = innerHTML;
     cart.style.display = "flex";
+
+    // setup checkout event listener
+    const checkoutButton = document.getElementById("checkout-button");
+    checkoutButton.addEventListener("click", async function(e){
+        let requestOptions = {
+            credentials: 'include',
+            method: 'GET',
+            redirect: 'follow'
+        };
+        let rawResponse = await fetch(`${API}/checkout/`, requestOptions);
+        let res = await rawResponse.json();
+        console.log(res);
+        if(res.response == true){
+            cartData = {};
+            alert(res.message);
+            updateCart(cartData);
+        }
+    });
 }
 
 function setUpCartEventListeners(){
@@ -203,10 +223,9 @@ function setUpCartEventListeners(){
 
         // event listener for add buttons
         const addButton = element.getElementsByClassName("grid-item-button button-add")[0]
-        addButton.addEventListener("click", async function() {
-            await addItemToCart(elementId);
-        })
         addButton.addEventListener("click", async function(e){
+            let status = await addItemToCart(elementId);
+            if(status == false) return; 
             const itemsQuery = await getDataWithQuery(`select * from items where id=${elementId}`, "items");
             const item = itemsQuery[0];
             if(item.id in cartData){

@@ -35,14 +35,14 @@ func main() {
 	r.HandleFunc("/", root).Methods("GET")
 	r.HandleFunc("/login/", cmd.Login).Methods("POST")
 	r.HandleFunc("/signup/", cmd.Signup).Methods("POST")
-	r.HandleFunc("/logout/", cmd.Logout).Methods("POST")
+	r.HandleFunc("/logout/", cmd.Logout).Methods("GET")
 	r.HandleFunc("/query/", cmd.CustomQuery).Methods("POST")
 
 	r.HandleFunc("/add/", cmd.AddItem).Methods("POST")
 	r.HandleFunc("/remove/", cmd.RemoveItem).Methods("POST")
 	r.HandleFunc("/items/", cmd.CheckItems).Methods("GET")
 	r.HandleFunc("/checkout/", cmd.Checkout).Methods("GET")
-	r.HandleFunc("/cookie/{email}", cmd.GenerateCookie).Methods("GET")
+	r.HandleFunc("/cookie/{email}/", cmd.GenerateCookie).Methods("GET")
 
 	PORT := ":8080"
 	log.Info.Println("started server on port", PORT)

@@ -72,12 +72,13 @@ func IsValidLogin(user User) (bool, string, error) {
 	var response Verification
 	_ = json.Unmarshal(result, &response)
 
+	log.Info.Println(response.Value)
 	// see if the problem is from email or password
-	if response.Value != 0 {
+	if response.Value != 1 {
 		result, err = ReturnQuery(
 			`SELECT 1
-			FROM users
-			WHERE email = $1`, "verification", user.Email)
+				FROM users
+				WHERE email = $1`, "verification", user.Email)
 		if err != nil {
 			return false, "internal error", err
 		}
@@ -85,13 +86,13 @@ func IsValidLogin(user User) (bool, string, error) {
 		var email_response Verification
 		_ = json.Unmarshal(result, &email_response)
 		// email exists, problem in password
-		if response.Value == 1 {
+		if email_response.Value == 1 {
 			return false, "Incorrect password", nil
 		} else {
 			return false, "Email is not registered", nil
 		}
 	}
-	return response.Value == 1, "", nil
+	return true, "", nil
 }
 
 // check that string provided is a valid email
@@ -122,14 +123,26 @@ func AddUser(user User) error {
 // generate uuid string cookie and map cookie to email in redis cache
 func SetCookie(w *http.ResponseWriter, email string) string {
 	val := uuid.NewString()
-	RegisterCookie(val, email)
-	http.SetCookie(*w, &http.Cookie{
-		Name:     "goCookie",
-		Value:    val,
-		SameSite: http.SameSiteNoneMode,
-		Secure:   true,
-		Path:     "/",
-	})
+	if email != "" {
+		RegisterCookie(val, email)
+		http.SetCookie(*w, &http.Cookie{
+			Name:     "goCookie",
+			Value:    val,
+			SameSite: http.SameSiteNoneMode,
+			Secure:   true,
+			Path:     "/",
+		})
+	} else {
+		http.SetCookie(*w, &http.Cookie{
+			Name:     "goCookie",
+			Value:    val,
+			SameSite: http.SameSiteNoneMode,
+			Secure:   true,
+			Path:     "/",
+			MaxAge:   -1,
+		})
+	}
+
 	return val
 }
 
@@ -150,7 +163,7 @@ func RequireCookie(w *http.ResponseWriter, r *http.Request) (string, error) {
 	c, err := r.Cookie("goCookie")
 	if err != nil {
 		writer.WriteHeader(http.StatusUnauthorized)
-		resp, _ := json.Marshal(map[string]string{"message": "Please login first!"})
+		resp, _ := json.Marshal(map[string]any{"response": false, "message": "Please login first!"})
 		writer.Write(resp)
 		return "", err
 	}

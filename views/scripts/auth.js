@@ -1,5 +1,5 @@
 const BASEURL = "http://127.0.0.1:5500/"
-const API = "https://faae-41-43-245-201.eu.ngrok.io"
+const API = "http://localhost:8080"
 
 if(localStorage.getItem("cookie") !== ''){
     location.replace(BASEURL)
@@ -8,7 +8,6 @@ const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
 
-// TODO: if logged in, go to index page directly
 signUpButton.addEventListener('click', () => {
 	container.classList.add("right-panel-active");
 });
@@ -31,21 +30,34 @@ async function login(email, password){
         redirect: 'follow'
     };
     
-    try{
-        let rawResponse = await fetch(`${API}/login/`, requestOptions);
-        let res = await rawResponse.json();
-        console.log(res);
-        if(res.response == true){
-            res.redirect = `${API}/cookie/${email}/`
-            // for login and logout purposes. Generate your own cookie because the API endpoint doesn't return a cookie anymore.
-            localStorage.setItem("cookie", res.cookie); 
-            return true;
-        }
-    }catch(error){
-        console.error("[FATAL] ", error);
-        return false;
+    let rawResponse = await fetch(`${API}/login/`, requestOptions);
+    let res = await rawResponse.json();
+    console.log(res)
+    if(res.response == true){
+        let redirectURL = `${API}/cookie/${email}/`
+        let rawResponse = await fetch(redirectURL, {method: "GET"});
+        console.log(rawResponse);
+
+        // for login and logout purposes, generate your own cookie
+        // because the API endpoint doesn't return a cookie anymore.
+        localStorage.setItem("cookie", "dummy"); 
+        return true;
+    }
+    const errorLabel = document.getElementById("login-error");
+    errorLabel.innerHTML = `* ${res.message}`;
+    errorLabel.style.display = "flex";
+
+    if(res.message.toLowerCase().includes("email")){
+        const email =  document.getElementById("login-email");
+        email.style.border = "1px red solid";
+        email.classList.add("error");
+    }else{
+        const password = document.getElementById("login-password");
+        password.style.border = "1px red solid";
+        password.classList.add("error");
     }
     return false; 
+    
 }
 
 async function singUp(email, password){
@@ -58,19 +70,25 @@ async function singUp(email, password){
         redirect: 'follow'
     };
     
-    try{
-        let rawResponse = await fetch(`${API}/signup/`, requestOptions);
-        let res = await rawResponse.json();
-        console.log(res);
-        if(res.response == true){
-            res.redirect = `${API}/cookie/${email}/`
-            // for login and logout purposes. Generate your own cookie because the API endpoint doesn't return a cookie anymore.
-            localStorage.setItem("cookie", res.cookie); 
-            return true;
-        }
-    }catch(error){
-        console.error("[FATAL] ", error);
-        return false;
+    
+    let rawResponse = await fetch(`${API}/signup/`, requestOptions);
+    let res = await rawResponse.json();
+    if(res.response == true){
+        return true;
+    }
+
+    const errorLabel = document.getElementById("signup-error");
+    errorLabel.innerHTML = `* ${res.message}`;
+    errorLabel.style.display = "block";
+
+    if(res.message.toLowerCase().includes("email")){
+        const email = document.getElementById("signup-email");
+        email.style.border = "1px red solid";
+        email.classList.add("error");
+    }else{
+        const password = document.getElementById("signup-password");
+        password.style.border = "1px red solid";
+        password.classList.add("error");
     }
     return false; 
 }
@@ -83,8 +101,6 @@ loginForm.addEventListener("submit", async function(e){
 
     const status = await login(email, password);
 
-    // TODO: add loading symbol in login button
-    // TODO: show error tag
     if(status){
         location.replace(BASEURL)
     }
