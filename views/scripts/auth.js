@@ -1,5 +1,5 @@
-const BASEURL = "http://127.0.0.1:5500/"
-const API = "http://localhost:8080"
+const BASEURL = "https://container-service-2.e41513gjaiic0.eu-central-1.cs.amazonlightsail.com/"
+var API = "https://container-service-1.e41513gjaiic0.eu-central-1.cs.amazonlightsail.com";
 
 if(localStorage.getItem("cookie") !== ''){
     location.replace(BASEURL)
@@ -34,9 +34,6 @@ async function login(email, password){
     let res = await rawResponse.json();
     console.log(res)
     if(res.response == true){
-        let redirectURL = `${API}/cookie/${email}/`
-        let rawResponse = await fetch(redirectURL, {method: "GET"});
-        console.log(rawResponse);
 
         // for login and logout purposes, generate your own cookie
         // because the API endpoint doesn't return a cookie anymore.
@@ -102,7 +99,8 @@ loginForm.addEventListener("submit", async function(e){
     const status = await login(email, password);
 
     if(status){
-        location.replace(BASEURL)
+        location.replace(`${API}/cookie/${email}/`);
+        // location.replace(BASEURL)
     }
 }) 
 
@@ -116,7 +114,7 @@ signUpForm.addEventListener("submit", async (e) =>{
    const status = await singUp(email, password);
    
    if(status){
-        location.replace(BASEURL + "templates/auth.html")
+        location.replace(BASEURL + "templates/auth.html");
    }
 });
 

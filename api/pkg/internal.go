@@ -5,15 +5,11 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/mail"
-	"os"
-	"strings"
 	"time"
 
 	log "github.com/MohamedAbdeen21/cloud-store/logger"
 	"github.com/google/uuid"
 )
-
-var frontendOrigin string = strings.Split(os.Getenv("frontendOrigin"), "=")[0]
 
 type Query struct {
 	Sql    string `json:"query"`
@@ -123,7 +119,7 @@ func AddUser(user User) error {
 // generate uuid string cookie and map cookie to email in redis cache
 func SetCookie(w *http.ResponseWriter, email string) string {
 	val := uuid.NewString()
-	if email != "" {
+	if email != "remove" {
 		RegisterCookie(val, email)
 		http.SetCookie(*w, &http.Cookie{
 			Name:     "goCookie",
@@ -134,15 +130,15 @@ func SetCookie(w *http.ResponseWriter, email string) string {
 		})
 	} else {
 		http.SetCookie(*w, &http.Cookie{
-			Name:     "goCookie",
-			Value:    val,
-			SameSite: http.SameSiteNoneMode,
-			Secure:   true,
-			Path:     "/",
-			MaxAge:   -1,
+			Name:  "goCookie",
+			Value: "",
+			// SameSite: http.SameSiteNoneMode,
+			// Secure:   true,
+			Path:    "/",
+			MaxAge:  -1,
+			Expires: time.Now().Add(-100 * time.Hour),
 		})
 	}
-
 	return val
 }
 
@@ -215,8 +211,8 @@ func RemoveCart(cookie string) {
 	rdb.Del(context.Background(), cookie)
 }
 
-func SetHeaders(w *http.ResponseWriter, method string) {
-	(*w).Header().Set("Access-Control-Allow-Origin", frontendOrigin)
+func SetHeaders(w *http.ResponseWriter, origin string, method string) {
+	(*w).Header().Set("Access-Control-Allow-Origin", origin)
 	(*w).Header().Set("Access-Control-Allow-Credentials", "true")
 	(*w).Header().Set("Access-Control-Allow-Headers", "Content-Type, withCredentials")
 	(*w).Header().Set("Access-Control-Allow-Methods", method)

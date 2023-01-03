@@ -1,12 +1,12 @@
-const BASEURL = "http://127.0.0.1:5500/"
-const API = "http://localhost:8080"
+const BASEURL = "https://container-service-2.e41513gjaiic0.eu-central-1.cs.amazonlightsail.com/"
+var API = "https://container-service-1.e41513gjaiic0.eu-central-1.cs.amazonlightsail.com";
 
 const navAuth = document.getElementById("nav-auth");
 let element; 
 
-if(localStorage.getItem("cookie") !== ''){
+if(localStorage.getItem("cookie") !== '' || Storage.getItem("cookie") === null){
     navAuth.innerHTML = `
-        <a href="/templates/auth.html" id="logout-button">
+        <a href="${API+"/cookie/remove/"}" id="logout-button">
             <i class="glyphicon glyphicon-log-out" style="padding-right: 5px"></i>
             Logout
         </a>
@@ -15,7 +15,6 @@ if(localStorage.getItem("cookie") !== ''){
     logoutButton.addEventListener("click", async function(e){
         localStorage.setItem("cookie", "");
         await fetch(`${API}/logout/`, {method: "GET", redirect: "follow"});
-        location.replace(BASEURL+"templates/auth.html");
     }) 
     
     
@@ -193,6 +192,7 @@ function updateCart(cartItems){
         <button class="checkout" id="checkout-button">Checkout</button>
         `
     }
+
     const cart = document.getElementById("cart");
     cart.innerHTML = innerHTML;
     cart.style.display = "flex";
