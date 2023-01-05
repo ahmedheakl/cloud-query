@@ -1,5 +1,7 @@
-const BASEURL = "https://container-service-2.e41513gjaiic0.eu-central-1.cs.amazonlightsail.com/"
-var API = "https://container-service-1.e41513gjaiic0.eu-central-1.cs.amazonlightsail.com";
+// const BASEURL = "https://container-service-2.e41513gjaiic0.eu-central-1.cs.amazonlightsail.com/"
+// var API = "https://container-service-1.e41513gjaiic0.eu-central-1.cs.amazonlightsail.com";
+ const BASEURL = "http://localhost:5500/"
+ const API = "http://localhost:8080"
 
 if(localStorage.getItem("cookie") !== ''){
     location.replace(BASEURL)

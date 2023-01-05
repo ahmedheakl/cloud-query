@@ -16,6 +16,7 @@ services:
       - username=postgres
       - password=postgres
       - frontendOrigin=http://localhost:3000
+      - APIOrigin=http://localhost:8080
     ports:
       - 8080:8080
 

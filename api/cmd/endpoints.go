@@ -245,6 +245,13 @@ func CheckItems(w http.ResponseWriter, r *http.Request) {
 		ids = append(ids, int_id)
 	}
 
+	if len(ids) == 0 {
+		w.WriteHeader(http.StatusOK)
+		resp, _ := json.Marshal(ids)
+		w.Write(resp)
+		return
+	}
+
 	// get all item info
 	items, _ := pkg.ReturnQuery("SELECT * FROM items WHERE id = ANY($1)", "items", pq.Array(ids))
 	var cartItems []pkg.Cart

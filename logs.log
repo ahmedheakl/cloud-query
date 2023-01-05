@@ -1109,3 +1109,134 @@
 [INFO]:		2023/01/03 14:11:50 internal.go:71: 1
 [INFO]:		2023/01/03 14:11:50 endpoints.go:102: login successful for user 'mohamedabden21@gmail.com', reused cookie 'db421e14-c716-4e1b-bace-d779e109c692'
 [INFO]:		2023/01/03 14:11:50 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:09:58 api.go:28: starting server ...
+[INFO]:		2023/01/03 15:09:58 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/03 15:09:58 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/03 15:09:58 db.go:73: connecting to database ...
+[INFO]:		2023/01/03 15:10:00 db.go:84: successfully connected to database!
+[INFO]:		2023/01/03 15:10:00 api.go:48: started server on port :8080
+[INFO]:		2023/01/03 15:10:43 api.go:28: starting server ...
+[INFO]:		2023/01/03 15:10:43 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/03 15:10:43 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/03 15:10:43 db.go:73: connecting to database ...
+[INFO]:		2023/01/03 15:10:44 db.go:84: successfully connected to database!
+[INFO]:		2023/01/03 15:10:44 api.go:48: started server on port :8080
+[INFO]:		2023/01/03 15:11:05 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:11:11 endpoints.go:67: logging in for user 'mohamedabden21@gmail.com' ...
+[INFO]:		2023/01/03 15:11:11 internal.go:71: 1
+[INFO]:		2023/01/03 15:11:11 endpoints.go:98: login successful for user 'mohamedabden21@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 15:11:12 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:11:13 endpoints.go:39: Executing query select * from items where id=2
+[INFO]:		2023/01/03 15:12:12 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:12:14 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:12:15 endpoints.go:39: Executing query select * from items where id=2
+[INFO]:		2023/01/03 15:13:29 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:13:53 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:13:55 endpoints.go:39: Executing query select * from items where id=2
+[INFO]:		2023/01/03 15:16:02 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:16:04 endpoints.go:39: Executing query select * from items where id=2
+[INFO]:		2023/01/03 15:16:57 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:17:04 endpoints.go:39: Executing query select * from items where id=2
+[INFO]:		2023/01/03 15:17:21 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:17:23 endpoints.go:39: Executing query select * from items where id=2
+[INFO]:		2023/01/03 15:17:27 endpoints.go:39: Executing query select * from items where id=3
+[INFO]:		2023/01/03 15:17:30 endpoints.go:39: Executing query select * from items where id=4
+[INFO]:		2023/01/03 15:17:30 endpoints.go:39: Executing query select * from items where id=4
+[INFO]:		2023/01/03 15:17:30 endpoints.go:39: Executing query select * from items where id=4
+[INFO]:		2023/01/03 15:18:12 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:18:26 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:18:29 endpoints.go:39: Executing query select * from items where id=2
+[INFO]:		2023/01/03 15:18:31 endpoints.go:39: Executing query select * from items where id=3
+[INFO]:		2023/01/03 15:18:48 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:18:50 endpoints.go:39: Executing query select * from items where id=2
+[INFO]:		2023/01/03 15:19:03 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:19:04 endpoints.go:39: Executing query select * from items where id=2
+[INFO]:		2023/01/03 15:19:22 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:19:31 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:20:06 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:20:09 endpoints.go:39: Executing query select * from items where id=2
+[INFO]:		2023/01/03 15:20:18 endpoints.go:39: Executing query select * from items where id=2
+[INFO]:		2023/01/03 15:20:25 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:20:27 endpoints.go:39: Executing query select * from items where id=2
+[INFO]:		2023/01/03 15:20:39 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:20:45 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:20:50 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:20:52 endpoints.go:39: Executing query select * from items where id=2
+[INFO]:		2023/01/03 15:20:59 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:21:00 endpoints.go:39: Executing query select * from items where id=2
+[INFO]:		2023/01/03 15:21:02 endpoints.go:39: Executing query select * from items where id=2
+[INFO]:		2023/01/03 15:21:08 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:21:09 endpoints.go:39: Executing query select * from items where id=2
+[INFO]:		2023/01/03 15:22:14 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:22:18 endpoints.go:39: Executing query select * from items where id=2
+[INFO]:		2023/01/03 15:22:21 endpoints.go:39: Executing query select * from items where id=3
+[INFO]:		2023/01/03 15:22:45 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:23:09 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:23:26 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:23:43 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:24:20 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:24:32 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:24:55 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:25:14 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:25:17 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:25:23 endpoints.go:67: logging in for user 'mohamedabden21@gmail.com' ...
+[INFO]:		2023/01/03 15:25:23 internal.go:71: 1
+[INFO]:		2023/01/03 15:25:23 endpoints.go:98: login successful for user 'mohamedabden21@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 15:25:23 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:26:23 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:26:33 endpoints.go:67: logging in for user 'mohamedabden21@gmail.com' ...
+[INFO]:		2023/01/03 15:26:33 internal.go:71: 1
+[INFO]:		2023/01/03 15:26:33 endpoints.go:98: login successful for user 'mohamedabden21@gmail.com', generated cookie ''
+[INFO]:		2023/01/03 15:26:33 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:29:17 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:29:32 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:29:37 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:30:03 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:32:54 api.go:28: starting server ...
+[INFO]:		2023/01/03 15:32:54 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/03 15:32:54 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/03 15:32:54 db.go:73: connecting to database ...
+[INFO]:		2023/01/03 15:32:56 db.go:84: successfully connected to database!
+[INFO]:		2023/01/03 15:32:56 api.go:48: started server on port :8080
+[INFO]:		2023/01/03 15:34:15 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:34:55 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:35:13 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:35:57 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:36:00 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:36:01 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:36:19 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:36:44 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:37:14 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:37:32 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:37:33 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:37:53 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:40:41 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:40:44 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:41:03 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:41:55 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:42:25 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:42:40 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:42:41 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:48:49 api.go:28: starting server ...
+[INFO]:		2023/01/03 15:48:49 db.go:102: successfully connected to redis!
+[INFO]:		2023/01/03 15:48:49 db.go:121: successfully connected to redis!
+[INFO]:		2023/01/03 15:48:49 db.go:73: connecting to database ...
+[INFO]:		2023/01/03 15:49:01 db.go:84: successfully connected to database!
+[INFO]:		2023/01/03 15:49:01 api.go:48: started server on port :8080
+[INFO]:		2023/01/03 15:49:30 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:49:42 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:50:04 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:50:58 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:51:21 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:51:32 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:52:19 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:52:43 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:52:45 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:52:57 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:53:05 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:53:13 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:53:21 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:53:23 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:53:25 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:53:30 endpoints.go:39: Executing query select * from items
+[INFO]:		2023/01/03 15:53:34 endpoints.go:39: Executing query select * from items

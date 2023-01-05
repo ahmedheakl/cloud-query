@@ -5,3 +5,5 @@ database/.terraform*
 docs/build
 .vscode
 database/users.sql
+/Project_Documentation.md
+/docker-compose.yml
