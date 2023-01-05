@@ -4,16 +4,27 @@ services:
     command: "redis-server"
     expose:
       - 6379
-  
+
   api:
     depends_on:
       - redis
     build: ./api/.
     environment:
-      - host=terraform-20221225193546949200000001.clgu6fwjxdcc.me-south-1.rds.amazonaws.com
+      - host=terraform-20221229205211947800000001.clgu6fwjxdcc.me-south-1.rds.amazonaws.com
       - redis=redis:6379
       - database=testdb
       - username=postgres
       - password=postgres
+      - frontendOrigin=http://localhost:3000
+      - APIOrigin=http://localhost:8080
     ports:
       - 8080:8080
+
+  frontend:
+    image: nginx:alpine
+    volumes:
+      - ./views/:/usr/share/nginx/html
+    depends_on:
+      - api
+    ports:
+      - 3000:80

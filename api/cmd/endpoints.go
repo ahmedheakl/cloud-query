@@ -3,6 +3,7 @@ package cmd
 import (
 	"encoding/json"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -12,6 +13,9 @@ import (
 	"github.com/lib/pq"
 )
 
+var frontendOrigin string = strings.Split(os.Getenv("frontendOrigin"), "=")[0]
+var selfOrigin string = strings.Split(os.Getenv("APIOrigin"), "=")[0]
+
 func InitConnections() error {
 	return pkg.InitConnections()
 }
@@ -20,7 +24,7 @@ func InitConnections() error {
 // check structs at pkg/internal for the right order
 // TODO: return only the required columns and in any order
 func CustomQuery(w http.ResponseWriter, r *http.Request) {
-	pkg.SetHeaders(&w, "POST")
+	pkg.SetHeaders(&w, frontendOrigin, "POST")
 	// Extract query from request body
 	var query pkg.Query
 	err := json.NewDecoder(r.Body).Decode(&query)
@@ -48,7 +52,7 @@ func CustomQuery(w http.ResponseWriter, r *http.Request) {
 }
 
 func Login(w http.ResponseWriter, r *http.Request) {
-	pkg.SetHeaders(&w, "POST")
+	pkg.SetHeaders(&w, frontendOrigin, "POST")
 	// decode request body into User struct instance `user`
 	var user pkg.User
 	err := json.NewDecoder(r.Body).Decode(&user)
@@ -85,6 +89,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusForbidden)
 		log.Info.Printf("login for user '%s' failed, %s", user.Email, errorMessage)
 		resp, _ = json.Marshal(map[string]any{"response": false, "message": errorMessage})
+		// w.Write(resp)
 	} else {
 		// get value of cookie, generate new cookie if not found.
 		var cookie string
@@ -98,8 +103,10 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		}
 
 		if isValid {
+			// http.Redirect(w, r, fmt.Sprintf("/cookie/%s/", user.Email), http.StatusSeeOther)
 			w.WriteHeader(http.StatusAccepted)
 			resp, _ = json.Marshal(map[string]any{"response": true, "message": "user logged in successfully"})
+			// w.Write(resp)
 		}
 	}
 	w.Write(resp)
@@ -107,7 +114,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 // Logging out removes the cart
 func Logout(w http.ResponseWriter, r *http.Request) {
-	pkg.SetHeaders(&w, "GET")
+	pkg.SetHeaders(&w, frontendOrigin, "GET")
 	// Must have cookie
 	cookie, err := pkg.RequireCookie(&w, r)
 	if err != nil {
@@ -115,13 +122,13 @@ func Logout(w http.ResponseWriter, r *http.Request) {
 	}
 	pkg.RemoveCart(cookie)
 	pkg.RemoveCookie(cookie)
-	pkg.SetCookie(&w, "")
+	// pkg.SetCookie(&w, "remove")
 	resp, _ := json.Marshal(map[string]any{"response": true, "message": "user logged out successfully"})
 	w.Write(resp)
 }
 
 func Signup(w http.ResponseWriter, r *http.Request) {
-	pkg.SetHeaders(&w, "POST")
+	pkg.SetHeaders(&w, frontendOrigin, "POST")
 	// decode request body into User struct instance `user`
 	var user pkg.User
 	err := json.NewDecoder(r.Body).Decode(&user)
@@ -157,7 +164,7 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 }
 
 func AddItem(w http.ResponseWriter, r *http.Request) {
-	pkg.SetHeaders(&w, "POST")
+	pkg.SetHeaders(&w, frontendOrigin, "POST")
 	// Decode request body into Purchase struct
 	var pur pkg.Purchase
 	err := json.NewDecoder(r.Body).Decode(&pur)
@@ -190,7 +197,7 @@ func AddItem(w http.ResponseWriter, r *http.Request) {
 }
 
 func RemoveItem(w http.ResponseWriter, r *http.Request) {
-	pkg.SetHeaders(&w, "POST")
+	pkg.SetHeaders(&w, frontendOrigin, "POST")
 	// decode request into Purchase struct
 	var pur pkg.Purchase
 	err := json.NewDecoder(r.Body).Decode(&pur)
@@ -223,7 +230,7 @@ func RemoveItem(w http.ResponseWriter, r *http.Request) {
 }
 
 func CheckItems(w http.ResponseWriter, r *http.Request) {
-	pkg.SetHeaders(&w, "GET")
+	pkg.SetHeaders(&w, frontendOrigin, "GET")
 	// must have cookie
 	cookie, err := pkg.RequireCookie(&w, r)
 	if err != nil {
@@ -236,6 +243,13 @@ func CheckItems(w http.ResponseWriter, r *http.Request) {
 	for id := range cart {
 		int_id, _ := strconv.Atoi(id)
 		ids = append(ids, int_id)
+	}
+
+	if len(ids) == 0 {
+		w.WriteHeader(http.StatusOK)
+		resp, _ := json.Marshal(ids)
+		w.Write(resp)
+		return
 	}
 
 	// get all item info
@@ -266,7 +280,7 @@ func CheckItems(w http.ResponseWriter, r *http.Request) {
 }
 
 func Checkout(w http.ResponseWriter, r *http.Request) {
-	pkg.SetHeaders(&w, "GET")
+	pkg.SetHeaders(&w, frontendOrigin, "GET")
 	// must have cookie
 	cookie, err := pkg.RequireCookie(&w, r)
 	if err != nil {
@@ -295,6 +309,12 @@ func Checkout(w http.ResponseWriter, r *http.Request) {
 }
 
 func GenerateCookie(w http.ResponseWriter, r *http.Request) {
-	pkg.SetHeaders(&w, "GET")
-	pkg.SetCookie(&w, strings.Split(r.URL.Path, "/")[2])
+	pkg.SetHeaders(&w, selfOrigin, "GET")
+	var email = strings.Split(r.URL.Path, "/")[2]
+	pkg.SetCookie(&w, email)
+	if email != "remove" {
+		http.Redirect(w, r, frontendOrigin, http.StatusFound)
+	} else {
+		http.Redirect(w, r, frontendOrigin+"/templates/auth.html", http.StatusSeeOther)
+	}
 }

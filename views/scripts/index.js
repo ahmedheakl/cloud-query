@@ -1,12 +1,15 @@
-const BASEURL = "http://127.0.0.1:5500/"
+// const BASEURL = "https://container-service-2.e41513gjaiic0.eu-central-1.cs.amazonlightsail.com/"
+// var API = "https://container-service-1.e41513gjaiic0.eu-central-1.cs.amazonlightsail.com";
+const BASEURL = "http://localhost:5500/"
 const API = "http://localhost:8080"
 
 const navAuth = document.getElementById("nav-auth");
 let element; 
 
-if(localStorage.getItem("cookie") !== ''){
+
+if(localStorage.getItem("cookie") !== '' || localStorage.getItem("cookie") === null){
     navAuth.innerHTML = `
-        <a href="/templates/auth.html" id="logout-button">
+        <a href="${API+"/cookie/remove/"}" id="logout-button">
             <i class="glyphicon glyphicon-log-out" style="padding-right: 5px"></i>
             Logout
         </a>
@@ -15,7 +18,6 @@ if(localStorage.getItem("cookie") !== ''){
     logoutButton.addEventListener("click", async function(e){
         localStorage.setItem("cookie", "");
         await fetch(`${API}/logout/`, {method: "GET", redirect: "follow"});
-        location.replace(BASEURL+"templates/auth.html");
     }) 
     
     
@@ -34,7 +36,6 @@ if(localStorage.getItem("cookie") !== ''){
 
 const mainGrid = document.getElementById("main-grid")
 const cartButton = document.getElementById("shopping-cart-button");
-let cartData = {};
 
 
 cartButton.addEventListener("click", (e) => {
@@ -144,14 +145,41 @@ async function addItemToCart(itemid){
 }
 
 /**
+ * Remove item with itemid input to the purchases table
+ * @param {number} itemid id of the cart item to be removed
+ * @returns {boolean} status flag for valid/invalid removal
+ */
+async function removeItemToCart(itemid){
+    let raw = `{"item": ${itemid}, "quantity": 1}`
+    let requestOptions = {
+        credentials: 'include',
+        method: 'POST',
+        body: raw,
+        redirect: 'follow'
+    };
+    
+    let rawResponse = await fetch(`${API}/remove/`, requestOptions);
+    let res = await rawResponse.json();
+    if(res.response == false){
+        alert(res.message)
+        return false;
+    }
+    return true;
+}
+
+
+/**
  * update cart UI with items found in `cartItems`
  * @param {object} cartItems list of items 
  * @returns {any}
  */
-function updateCart(cartItems){
+async function updateCart(){
     let innerHTML = "";
-    if(Object.keys(cartItems).length == 0){
+    var data = await fetch(`${API}/items/`, {"method": "GET",'credentials':'include'});
+    var items = await data.json();
+    if(items.length === 0){
         innerHTML = "There is nothing your cart."
+        cart.innerHTML = innerHTML;
     }else{
         let totalPrice = 0;
         innerHTML = `
@@ -164,7 +192,8 @@ function updateCart(cartItems){
                 <th>STotal</th>
             </tr>
         `
-        for(let item of Object.values(cartItems)){
+        for(var i = 0; i < items.length; i++){
+            var item = items[i];
             let subtotalPrice = item.quantity * item.price;
             totalPrice += subtotalPrice;
             subtotalPrice = subtotalPrice.toFixed(2);
@@ -192,7 +221,7 @@ function updateCart(cartItems){
         </table>
         <button class="checkout" id="checkout-button">Checkout</button>
         `
-    }
+
     const cart = document.getElementById("cart");
     cart.innerHTML = innerHTML;
     cart.style.display = "flex";
@@ -209,11 +238,11 @@ function updateCart(cartItems){
         let res = await rawResponse.json();
         console.log(res);
         if(res.response == true){
-            cartData = {};
             alert(res.message);
-            updateCart(cartData);
+            updateCart();
         }
     });
+    }
 }
 
 function setUpCartEventListeners(){
@@ -226,36 +255,37 @@ function setUpCartEventListeners(){
         addButton.addEventListener("click", async function(e){
             let status = await addItemToCart(elementId);
             if(status == false) return; 
-            const itemsQuery = await getDataWithQuery(`select * from items where id=${elementId}`, "items");
-            const item = itemsQuery[0];
-            if(item.id in cartData){
-                cartData[item.id].quantity += 1;
-            }else{
-                cartData[item.id] = {
-                    "id": item.id,
-                    "price": item.price,
-                    "name": item.name,
-                    "quantity": 1,
-                    "image": item.image,
-                };
-            }
+            // const itemsQuery = await getDataWithQuery(`select * from items where id=${elementId}`, "items");
+            // const item = itemsQuery[0];
+            // if(item.id in cartData){
+            //     cartData[item.id].quantity += 1;
+            // }else{
+            //     cartData[item.id] = {
+            //         "id": item.id,
+            //         "price": item.price,
+            //         "name": item.name,
+            //         "quantity": 1,
+            //         "image": item.image,
+            //     };
+            // }
             
-            updateCart(cartData);
+            updateCart();
         })
 
         // event listener for remove button
         const removeButton = element.getElementsByClassName("grid-item-button button-delete")[0]
         removeButton.addEventListener("click", async function(e){
-            const itemId = parseInt(elementId);
-
-            if(itemId in cartData){
-                if(cartData[elementId].quantity == 1){
-                    delete cartData[elementId];
-                }else{
-                    cartData[elementId].quantity -= 1; 
-                }
-            }
-            updateCart(cartData);
+            let status = await removeItemToCart(elementId);
+            if(status == false) return; 
+            // const itemId = parseInt(elementId);
+            // if(itemId in cartData){
+            //     if(cartData[elementId].quantity == 1){
+            //         delete cartData[elementId];
+            //     }else{
+            //         cartData[elementId].quantity -= 1; 
+            //     }
+            // }
+            updateCart();
         });
 
         
@@ -272,6 +302,7 @@ async function main(){
     const data = await getDataWithQuery('select * from items', "items");
     createItemElements(data);
     brands.add("All");
+    await updateCart();
 
     for(let dataItem of data){
         brands.add(dataItem.brand);
